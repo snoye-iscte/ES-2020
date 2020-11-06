@@ -14,15 +14,16 @@ import javax.swing.JPanel;
 public class getExcel extends JPanel {
 	JButton browse;
 	JLabel label = new JLabel("                                CODE SPELLS");
+	Gui gui;
 	
-	
-	public getExcel() {
+	public getExcel(Gui gui) {
+		this.gui = gui;
 		browse = new JButton("Browse");
 		makeItAlive();
 		
 	}
 	
-	public void addThings() {
+	public void addThings() { //adiciona elementos da SWING ao JPanel que depois vai ser usado na GUI
 		this.add(browse);
 		this.add(label);
 	}
@@ -39,7 +40,7 @@ public class getExcel extends JPanel {
 				System.out.println("YOU JUST CLICKED ON BROWSE BUTTON");
 				
 				 JFileChooser jfc = new JFileChooser(".");
-				 jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				 jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				 int returnValue = jfc.showOpenDialog(null);
 				 
 				 if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -47,6 +48,8 @@ public class getExcel extends JPanel {
 //					 selected_dir = selectedFile.getAbsolutePath();
 //					 textField_pasta.setText(selected_dir);
 					 System.out.println("selected dir: " + selectedFile.getAbsolutePath());
+					 gui.setSelectedFile(selectedFile.getAbsolutePath());
+					 gui.guiUpdate();
 				 }
 				
 			}
