@@ -101,14 +101,14 @@ public class getExcel extends JPanel {
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
 
 	public void readFromFile() throws NullPointerException, EncryptedDocumentException, IOException{ // at the begining our file location is uknown, so wee need to use try catch or if
-		if(selected_excel != null) {
-			System.out.println("from readFrom file method: " + selected_excel);
+		
+			//System.out.println("from readFrom file method: " + selected_excel);
 			 List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 			   
 			//Using a File object allows for lower memory consumption, while an InputStream requires more memory as it has to buffer the whole file.
 			    Workbook workbook = WorkbookFactory.create(new File(selected_excel));
 			    
-			    System.out.println("Workbook has " + workbook.getNumberOfSheets() + " Sheets : ");
+			   // System.out.println("Workbook has " + workbook.getNumberOfSheets() + " Sheets : ");
 			    
 			    Sheet firstSheet = workbook.getSheetAt(0);
 			    Iterator<Row> iterator = firstSheet.iterator();
@@ -121,24 +121,29 @@ public class getExcel extends JPanel {
 			       
 			        while (cellIterator.hasNext() ) {
 			            Cell nextCell = cellIterator.next();
+			            int rowIndex = nextCell.getRowIndex();
 			            int columnIndex = nextCell.getColumnIndex();
 			// System.out.println(row_number);
-			            if(row_number>0) {
-			          //  System.out.println("dentro do if");
+			            if(rowIndex>0) {
+			           // System.out.println("dentro do if");
+			            //	System.out.println("column index " + columnIndex);
 			            switch (columnIndex) {
+			            	
 			            case 0:
-			            	o_defeito.setMethod_ID((int)nextCell.getNumericCellValue());
-			            	//System.out.println(nextCell.getNumericCellValue());
-				            break;
+			            	System.out.println("id  " + nextCell.getNumericCellValue());
+			            	break;
 			            
 			            case 1:
+			            	System.out.println(nextCell.getStringCellValue());
 			            	 o_defeito.setPackage_name(nextCell.getStringCellValue());
+			            		//System.out.println(nextCell.getNumericCellValue());
 			                //System.out.println(nextCell.getStringCellValue());
 			            	//printCellValue(nextCell);
 			                break;
+			         
 			            case 2:
-			                o_defeito.setClass_name(nextCell.getStringCellValue());
-			                System.out.println(o_defeito);
+			               // o_defeito.setClass_name(nextCell.getStringCellValue());
+			                //System.out.println(o_defeito);
 			            	//printCellValue(nextCell);
 			                //System.out.println(nextCell.getStringCellValue());
 			                break;
@@ -150,55 +155,37 @@ public class getExcel extends JPanel {
 				            // o_defeito.setMethod_name(nextCell.getStringCellValue());
 			            	//printCellValue(nextCell);
 				            break;    
-			            case 5:
-			            	//printCellValue(nextCell);
-			            	//				             o_defeito.setLOC(inum2);
-				            break;
-			            case 6:
-				             
-				            break;
-			            case 7:
-				             
-				            break;
-			            case 8:
-				             
-				            break;
-			            case 9:
-				             
-				            break;
-			            case 10:
-				             
-				            break;
-			            case 11:
-				             
-				            break;
-			            case 12:
-				             
-				            break;
+			          
 			            }
+			            
+			        }else {
+			        	row_number++;
 			        }
+			            row_number++;
 			            lista_defeitos.add(o_defeito);
 			            //System.out.println(o_defeito);
 			           // lista_defeitos.add(o_defeito);
 			          //  System.out.println(lista_defeitos.toString());
-			            row_number++;
+			           
 			        }
 			        
 			      // System.out.println("row number " +row_number);
 			      
 			    }
 			   // System.out.println(lista_defeitos.size());
-			   System.out.println(lista_defeitos.toString());
+//			   System.out.println(lista_defeitos.toString());
 			    try {
 					workbook.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+//			    System.out.println(lista_defeitos.toString());
 			    
 			 
 			   
-		}
+		
+		
 		{
 		}
 		
