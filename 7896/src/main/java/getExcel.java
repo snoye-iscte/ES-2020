@@ -241,7 +241,7 @@ public class getExcel extends JPanel {
 	        default:
 	            System.out.print("");
 	    }
-
+//dkfnejfjsssss
 	    System.out.print("\t");
 	}
 
