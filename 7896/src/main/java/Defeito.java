@@ -8,7 +8,7 @@ public class Defeito { //classe feita para guardar defeitos/aramzenar
 	private int LOC;
 	private int CYCLO;
 	private int ATFD;
-	private int LAA;
+	private double LAA;
 	private boolean is_long_method;
 	private boolean iPlasma;
 	private boolean PMD;
@@ -62,10 +62,10 @@ public class Defeito { //classe feita para guardar defeitos/aramzenar
 	public void setATFD(int aTFD) {
 		ATFD = aTFD;
 	}
-	public int getLAA() {
+	public double getLAA() {
 		return LAA;
 	}
-	public void setLAA(int lAA) {
+	public void setLAA(double lAA) {
 		LAA = lAA;
 	}
 	public boolean isIs_long_method() {

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.print.DocFlavor.STRING;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -15,8 +14,7 @@ import javax.swing.JPanel;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -130,31 +128,62 @@ public class getExcel extends JPanel {
 			            switch (columnIndex) {
 			            	
 			            case 0:
-			            	System.out.println("id  " + nextCell.getNumericCellValue());
+			            	//System.out.println("id  " + nextCell.getNumericCellValue());
+			            	o_defeito.setMethod_ID((int)nextCell.getNumericCellValue());
+			            	//System.out.println(o_defeito.getMethod_ID());
 			            	break;
 			            
 			            case 1:
-			            	System.out.println(nextCell.getStringCellValue());
+			            	//System.out.println(nextCell.getStringCellValue());
 			            	 o_defeito.setPackage_name(nextCell.getStringCellValue());
+			            	 //System.out.println(o_defeito.getPackage_name());
 			            		//System.out.println(nextCell.getNumericCellValue());
 			                //System.out.println(nextCell.getStringCellValue());
 			            	//printCellValue(nextCell);
 			                break;
 			         
 			            case 2:
-			               // o_defeito.setClass_name(nextCell.getStringCellValue());
+			                o_defeito.setClass_name(nextCell.getStringCellValue());
+			                //System.out.println(o_defeito.getClass_name());
 			                //System.out.println(o_defeito);
 			            	//printCellValue(nextCell);
 			                //System.out.println(nextCell.getStringCellValue());
 			                break;
 			            case 3:
-			             // o_defeito.setClass_name(nextCell.getStringCellValue());
+			               o_defeito.setMethod_name(nextCell.getStringCellValue());
+			              // System.out.println(o_defeito.getMethod_name());
 			            	//printCellValue(nextCell);
 			                break;
 			            case 4:
-				            // o_defeito.setMethod_name(nextCell.getStringCellValue());
+				            o_defeito.setLOC((int)nextCell.getNumericCellValue());
+				           // System.out.println(o_defeito.getLOC());
 			            	//printCellValue(nextCell);
-				            break;    
+				            break;  
+				            
+			            case 5:
+				            o_defeito.setCYCLO((int)nextCell.getNumericCellValue());
+				           // System.out.println(o_defeito.getCYCLO());
+			            	//printCellValue(nextCell);
+				            break; 
+				            
+			            case 6:
+				            o_defeito.setATFD((int)nextCell.getNumericCellValue());
+				           // System.out.println(o_defeito.getATFD());
+			            	//printCellValue(nextCell);
+				            break;  
+				            
+			            case 7:
+			            	if(nextCell.getCellType() == CellType.STRING) {
+			            		System.out.println("its string");
+			            	}else {
+			            		o_defeito.setATFD((int)nextCell.getNumericCellValue());
+			            	}
+			            	
+				            //o_defeito.setLAA(nextCell.getNumericCellValue());
+				          //  System.out.println(o_defeito.getLAA());
+			            	//printCellValue(nextCell);
+				            break;  
+				            
 			          
 			            }
 			            
