@@ -15,12 +15,13 @@ public class getExcel extends JPanel {
 	JButton browse;
 	JLabel label = new JLabel("                                CODE SPELLS");
 	Gui gui;
+	private String selected_excel; // guarda o nome do ficheiro ecvel selecionado
 	
 	public getExcel(Gui gui) {
 		this.gui = gui;
 		browse = new JButton("Browse");
 		makeItAlive();
-		
+		readFromFile();
 	}
 	
 	public void addThings() { //adiciona elementos da SWING ao JPanel que depois vai ser usado na GUI
@@ -30,14 +31,12 @@ public class getExcel extends JPanel {
 	
 	
 	
-	public void makeItAlive() {
+	public void makeItAlive() { // adicionar sentinela ao nosso botao brawse
 		
 		browse.addActionListener(new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("YOU JUST CLICKED ON BROWSE BUTTON");
+				System.out.println("YOU JUST CLICKED ON BROWSE BUTTON"); //just for testng can be deleted later
 				
 				 JFileChooser jfc = new JFileChooser(".");
 				 jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -45,9 +44,8 @@ public class getExcel extends JPanel {
 				 
 				 if (returnValue == JFileChooser.APPROVE_OPTION) {
 					 File selectedFile = jfc.getSelectedFile();
-//					 selected_dir = selectedFile.getAbsolutePath();
-//					 textField_pasta.setText(selected_dir);
-					 System.out.println("selected dir: " + selectedFile.getAbsolutePath());
+					 selected_excel = selectedFile.getAbsolutePath();
+					 System.out.println("selected dir: " + selected_excel);
 					 gui.setSelectedFile(selectedFile.getAbsolutePath());
 					 gui.guiUpdate();
 				 }
@@ -56,6 +54,8 @@ public class getExcel extends JPanel {
 		});
 	}
 	
-	
+	public void readFromFile() throws NullPointerException{ // at the begining our file location is uknown, so wee need to use try catch or if
+		
+	}
 
 }
