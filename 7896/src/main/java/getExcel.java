@@ -76,7 +76,7 @@ public class getExcel extends JPanel {
 					 gui.setSelectedFile(selectedFile.getAbsolutePath()); //diz a gui qual ficheiro foi adicionado
 					 gui.guiUpdate();
 				 }
-				
+				//d
 			}
 		});
 	}
