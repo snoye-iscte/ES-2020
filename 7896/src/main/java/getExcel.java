@@ -33,7 +33,8 @@ public class getExcel extends JPanel {
 	private JLabel label = new JLabel("                                CODE SPELLS");
 	private Gui gui;
 	private String selected_excel = "C:\\Users\\ASUS\\Downloads\\Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
-	 private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
+	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
+	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	public getExcel(Gui gui) {
 		this.gui = gui;
 		browse = new JButton("Browse");
@@ -41,12 +42,12 @@ public class getExcel extends JPanel {
 		
 		try {
 			readFromFile();
-			passExcelDataToJavaTable();
+			
 		} catch (EncryptedDocumentException | NullPointerException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		passExcelDataToJavaTable();
 	}
 	
 	public void addThings() { //adiciona elementos da SWING ao JPanel que depois vai ser usado na GUI
@@ -82,22 +83,7 @@ public class getExcel extends JPanel {
 	
 	
 	
-//	public void read2() {
-//		File file = new File("resources/Test Data.xlsx");
-// 
-//		try(var workbooks = WorkbookFactory.create(file)){
-// 
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//		
-//		try(var workbooks = WorkbookFactory.create()){
-//		    currentSheet = workbooks.getSheet("john");
-//		}catch(Exception e){
-//		    e.printStackTrace();
-//		}
-//   }
-	
+
 	
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
 
@@ -125,101 +111,74 @@ public class getExcel extends JPanel {
 			            int rowIndex = nextCell.getRowIndex();
 			            int columnIndex = nextCell.getColumnIndex();
 			// System.out.println(row_number);
-			            if(rowIndex>0) {
-			           // System.out.println("dentro do if");
-			            //	System.out.println("column index " + columnIndex);
-			            switch (columnIndex) {
-			            	
-			            case 0:
-			            	//System.out.println("id  " + nextCell.getNumericCellValue());
-			            	o_defeito.setMethod_ID((int)nextCell.getNumericCellValue());
-			            	//System.out.println(o_defeito.getMethod_ID());
-			            	break;
-			            
-			            case 1:
-			            	//System.out.println(nextCell.getStringCellValue());
-			            	 o_defeito.setPackage_name(nextCell.getStringCellValue());
-			            	 //System.out.println(o_defeito.getPackage_name());
-			            		//System.out.println(nextCell.getNumericCellValue());
-			                //System.out.println(nextCell.getStringCellValue());
-			            	//printCellValue(nextCell);
-			                break;
-			         
-			            case 2:
-			                o_defeito.setClass_name(nextCell.getStringCellValue());
-			                //System.out.println(o_defeito.getClass_name());
-			                //System.out.println(o_defeito);
-			            	//printCellValue(nextCell);
-			                //System.out.println(nextCell.getStringCellValue());
-			                break;
-			            case 3:
-			               o_defeito.setMethod_name(nextCell.getStringCellValue());
-			              // System.out.println(o_defeito.getMethod_name());
-			            	//printCellValue(nextCell);
-			                break;
-			            case 4:
-				            o_defeito.setLOC((int)nextCell.getNumericCellValue());
-				           // System.out.println(o_defeito.getLOC());
-			            	//printCellValue(nextCell);
-				            break;  
+//			            if(rowIndex>0) {
+				           // System.out.println("dentro do if");
+				            //	System.out.println("column index " + columnIndex);
+				            switch (columnIndex) {
+				            	
+				            case 0:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setMethod_ID((int)nextCell.getNumericCellValue());}break;
 				            
-			            case 5:
-				            o_defeito.setCYCLO((int)nextCell.getNumericCellValue());
-				           // System.out.println(o_defeito.getCYCLO());
-			            	//printCellValue(nextCell);
-				            break; 
+				            case 1:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setPackage_name(nextCell.getStringCellValue());}break;
+				            	 
+				         
+				            case 2:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setClass_name(nextCell.getStringCellValue());}break;
+				            	
+				                
+				                
+				            case 3:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setMethod_name(nextCell.getStringCellValue());}break;
+				          
+				            case 4:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setLOC((int)nextCell.getNumericCellValue());}break;
+					       
+				            case 5:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else { o_defeito.setCYCLO((int)nextCell.getNumericCellValue());}break;
+					          
+					        case 6:
+					        	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setATFD((int)nextCell.getNumericCellValue());}break;
+					          
+				            case 7:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {
+				            		if(nextCell.getCellType() == CellType.STRING) {
+				            		o_defeito.setLAA( Double.valueOf(nextCell.getStringCellValue()));
+				            	}else { o_defeito.setLAA(nextCell.getNumericCellValue());}}break;
+				            	
+				            	
+				            	
+				            	
+				            	 
+				            case 8:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else {o_defeito.setIs_long_method(nextCell.getBooleanCellValue());}break;
+					          
+				            case 9:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else { o_defeito.setiPlasma(nextCell.getBooleanCellValue());}break;
+					           
+					              
+					            
+				            case 10:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else { o_defeito.setPMD(nextCell.getBooleanCellValue());}break;
+					            
+					          
+					            
+				            case 11:
+				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else { o_defeito.setIs_feature_envy(nextCell.getBooleanCellValue());}break;
+					            
+					         
 				            
-			            case 6:
-				            o_defeito.setATFD((int)nextCell.getNumericCellValue());
-				           // System.out.println(o_defeito.getATFD());
-			            	//printCellValue(nextCell);
-				            break;  
-				            
-			            case 7:
-			            	if(nextCell.getCellType() == CellType.STRING) {
-			            		o_defeito.setLAA( Double.valueOf(nextCell.getStringCellValue()));
-			            	}else { o_defeito.setLAA(nextCell.getNumericCellValue());}
-			            	 break; 
-			            	 
-			            case 8:
-				            o_defeito.setIs_long_method(nextCell.getBooleanCellValue());
-				            //System.out.println(o_defeito.isIs_long_method());
-				           // System.out.println(o_defeito.getATFD());
-			            	//printCellValue(nextCell);
-				            break;  
-			            case 9:
-				            o_defeito.setiPlasma(nextCell.getBooleanCellValue());
-				           // System.out.println(o_defeito.isiPlasma());
-				            //System.out.println(o_defeito.isIs_long_method());
-				           // System.out.println(o_defeito.getATFD());
-			            	//printCellValue(nextCell);
-				            break;      
-				            
-			            case 10:
-				            o_defeito.setPMD(nextCell.getBooleanCellValue());
-				          //  System.out.println(o_defeito.isPMD());
-				            //System.out.println(o_defeito.isIs_long_method());
-				           // System.out.println(o_defeito.getATFD());
-			            	//printCellValue(nextCell);
-				            break; 
-				            
-			            case 11:
-				            o_defeito.setIs_feature_envy(nextCell.getBooleanCellValue());
-				          //  System.out.println(o_defeito.isPMD());
-				            //System.out.println(o_defeito.isIs_long_method());
-				           // System.out.println(o_defeito.getATFD());
-			            	//printCellValue(nextCell);
-				            break;  
-			            
-			            }
+				            }
 			           
 			            
-			        }
+//			        }else {
+//			        	
+//			        }
 			         //   lista_defeitos.add(o_defeito);
 			            //System.out.println(o_defeito);
 			           // lista_defeitos.add(o_defeito);
 			           
-			         
+			      //   System.out.println("rownumber " + rowIndex);
 			           
 			        }
 			        
@@ -241,13 +200,16 @@ public class getExcel extends JPanel {
 			    System.out.println(lista_defeitos.size() + "s");
 			 
 			   
-			    for(int i = 0; i<20;i++) {
-		        	 System.out.println(lista_defeitos.get(i));
-		        	 
-		         }
-			    
+//			    for(int i = 0; i<20;i++) {
+//		        	 System.out.println(lista_defeitos.get(i));
+//		        	 
+//		         }
+			    for(String s : lista_com_titulos_das_colunas){
+			    	System.out.println(s);
+			    }
+//			    
 //			    for(Defeito defeito : lista_defeitos) {
-//			    	System.out.println(defeito);
+//			    	System.out.println(defeito.getArray());
 //			    }
 			    
 			  //  System.out.println(lista_defeitos); imprime lista toda numa linha, por issso dificil fazer debug
@@ -260,19 +222,21 @@ public class getExcel extends JPanel {
 	
 	public void passExcelDataToJavaTable() {
 		
-		String [][] data_from_excel = new String [12][3];
+		String [][] data_from_excel = new String [lista_defeitos.size()][lista_com_titulos_das_colunas.size()];
 		
-		for(int i=0;i<data_from_excel.length;i++) {
+		for(int i=1;i<data_from_excel.length;i++) {
 			for(int j=0;j<data_from_excel[i].length;j++) {
-				data_from_excel[i][j]=i*j + "";
+				data_from_excel[i][j]=lista_defeitos.get(i).getArray()[j];
 			}
 		}
 		   
 		    String data[][]={ {"101","Amit","670000"},    
 		                          {"102","Jai","780000"},    
 		                          {"101","Sachin","700000"}};    
-		    String column[]={"Method_ID","NAME","SALARY"};         
-		    JTable jt=new JTable(data_from_excel,column);    
+		    
+		  
+		    String column1 [] = ListToArray(lista_com_titulos_das_colunas);
+		    JTable jt=new JTable(data_from_excel,column1);    
 		    jt.setBounds(30,40,200,300);          
 		    JScrollPane sp=new JScrollPane(jt);    
 		    gui.manage_gui2(sp);          
@@ -280,28 +244,14 @@ public class getExcel extends JPanel {
 		     
 	}
 	
-	public  void printCellValue(Cell cell) {
-	    switch (cell.getCellType()) {
-	        case BOOLEAN:
-	            System.out.print(cell.getBooleanCellValue());
-	            break;
-	        case STRING:
-	            System.out.print(cell.getRichStringCellValue().getString());
-	            break;
-	        case NUMERIC:
-	        	System.out.println(cell.getNumericCellValue());
-	        	break;
-	        case FORMULA:
-	            System.out.print(cell.getCellFormula());
-	            break;
-	        case BLANK:
-	            System.out.print("");
-	            break;
-	        default:
-	            System.out.print("");
-	    }
-//dkfnejfjsssss
-	    System.out.print("\t");
+	public String [] ListToArray(List<String> lista_com_titulos) {
+		String [] first_column = new String[lista_com_titulos.size()];
+		for(int i=0;i<lista_com_titulos.size();i++) {
+			first_column[i] = lista_com_titulos.get(i);
+		}
+		return first_column;
 	}
+	
+	
 
 }

@@ -92,6 +92,14 @@ public class Defeito { //classe feita para guardar defeitos/aramzenar
 	public void setIs_feature_envy(boolean is_feature_envy) {
 		this.is_feature_envy = is_feature_envy;
 	}
+	
+	public String [] getArray() {
+		
+		String [] to_return = {getMethod_ID() + "", getPackage_name() + "", getClass_name() + "", getMethod_name() + "", getLOC() + "", getCYCLO() + "", getATFD() + "", getLAA() + "", 
+				isIs_long_method() + "", isiPlasma() + "", isPMD() + "", isIs_feature_envy() + ""  };
+		
+		return to_return;
+	}
 
 	
 	public String toString() {
