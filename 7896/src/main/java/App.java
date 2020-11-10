@@ -16,6 +16,6 @@ public class App
 		
 		gui.manage_gui(getE);
 		
-		//njdfjhdf
+		
     }
 }
