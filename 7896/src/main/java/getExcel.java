@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -31,7 +33,7 @@ public class getExcel extends JPanel {
 	private JLabel label = new JLabel("                                CODE SPELLS");
 	private Gui gui;
 	private String selected_excel = "C:\\Users\\ASUS\\Downloads\\Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
-	
+	 private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 	public getExcel(Gui gui) {
 		this.gui = gui;
 		browse = new JButton("Browse");
@@ -39,6 +41,7 @@ public class getExcel extends JPanel {
 		
 		try {
 			readFromFile();
+			passExcelDataToJavaTable();
 		} catch (EncryptedDocumentException | NullPointerException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,7 +104,7 @@ public class getExcel extends JPanel {
 	public void readFromFile() throws NullPointerException, EncryptedDocumentException, IOException{ // at the begining our file location is uknown, so wee need to use try catch or if
 		
 			//System.out.println("from readFrom file method: " + selected_excel);
-			 List<Defeito> lista_defeitos = new ArrayList<Defeito>();
+			
 			   
 			//Using a File object allows for lower memory consumption, while an InputStream requires more memory as it has to buffer the whole file.
 			    Workbook workbook = WorkbookFactory.create(new File(selected_excel));
@@ -112,7 +115,7 @@ public class getExcel extends JPanel {
 			    Iterator<Row> iterator = firstSheet.iterator();
 			 
 			    while (iterator.hasNext()) {
-			    	int row_number = 0;
+			    	
 			    	Row nextRow = iterator.next();
 			        Iterator<Cell> cellIterator = nextRow.cellIterator();
 			        Defeito o_defeito = new Defeito();
@@ -174,35 +177,60 @@ public class getExcel extends JPanel {
 				            
 			            case 7:
 			            	if(nextCell.getCellType() == CellType.STRING) {
-			            		System.out.println("its string");
-			            	}else {
-			            		o_defeito.setATFD((int)nextCell.getNumericCellValue());
-			            	}
-			            	
-				            //o_defeito.setLAA(nextCell.getNumericCellValue());
-				          //  System.out.println(o_defeito.getLAA());
+			            		o_defeito.setLAA( Double.valueOf(nextCell.getStringCellValue()));
+			            	}else { o_defeito.setLAA(nextCell.getNumericCellValue());}
+			            	 break; 
+			            	 
+			            case 8:
+				            o_defeito.setIs_long_method(nextCell.getBooleanCellValue());
+				            //System.out.println(o_defeito.isIs_long_method());
+				           // System.out.println(o_defeito.getATFD());
 			            	//printCellValue(nextCell);
 				            break;  
+			            case 9:
+				            o_defeito.setiPlasma(nextCell.getBooleanCellValue());
+				           // System.out.println(o_defeito.isiPlasma());
+				            //System.out.println(o_defeito.isIs_long_method());
+				           // System.out.println(o_defeito.getATFD());
+			            	//printCellValue(nextCell);
+				            break;      
 				            
-			          
-			            }
+			            case 10:
+				            o_defeito.setPMD(nextCell.getBooleanCellValue());
+				          //  System.out.println(o_defeito.isPMD());
+				            //System.out.println(o_defeito.isIs_long_method());
+				           // System.out.println(o_defeito.getATFD());
+			            	//printCellValue(nextCell);
+				            break; 
+				            
+			            case 11:
+				            o_defeito.setIs_feature_envy(nextCell.getBooleanCellValue());
+				          //  System.out.println(o_defeito.isPMD());
+				            //System.out.println(o_defeito.isIs_long_method());
+				           // System.out.println(o_defeito.getATFD());
+			            	//printCellValue(nextCell);
+				            break;  
 			            
-			        }else {
-			        	row_number++;
+			            }
+			           
+			            
 			        }
-			            row_number++;
-			            lista_defeitos.add(o_defeito);
+			         //   lista_defeitos.add(o_defeito);
 			            //System.out.println(o_defeito);
 			           // lista_defeitos.add(o_defeito);
-			          //  System.out.println(lista_defeitos.toString());
+			           
+			         
 			           
 			        }
 			        
+			       
+			        lista_defeitos.add(o_defeito);
+			       // System.out.println("lista defeitos size " + lista_defeitos.size());
 			      // System.out.println("row number " +row_number);
 			      
 			    }
-			   // System.out.println(lista_defeitos.size());
-//			   System.out.println(lista_defeitos.toString());
+			  
+		//	 System.out.println(lista_defeitos.toString());
 			    try {
 					workbook.close();
 				} catch (IOException e) {
@@ -210,15 +238,46 @@ public class getExcel extends JPanel {
 					e.printStackTrace();
 				}
 //			    System.out.println(lista_defeitos.toString());
-			    
+			    System.out.println(lista_defeitos.size() + "s");
 			 
 			   
-		
+			    for(int i = 0; i<20;i++) {
+		        	 System.out.println(lista_defeitos.get(i));
+		        	 
+		         }
+			    
+//			    for(Defeito defeito : lista_defeitos) {
+//			    	System.out.println(defeito);
+//			    }
+			    
+			  //  System.out.println(lista_defeitos); imprime lista toda numa linha, por issso dificil fazer debug
 		
 		{
 		}
 		
 		
+	}
+	
+	public void passExcelDataToJavaTable() {
+		
+		String [][] data_from_excel = new String [12][3];
+		
+		for(int i=0;i<data_from_excel.length;i++) {
+			for(int j=0;j<data_from_excel[i].length;j++) {
+				data_from_excel[i][j]=i*j + "";
+			}
+		}
+		   
+		    String data[][]={ {"101","Amit","670000"},    
+		                          {"102","Jai","780000"},    
+		                          {"101","Sachin","700000"}};    
+		    String column[]={"Method_ID","NAME","SALARY"};         
+		    JTable jt=new JTable(data_from_excel,column);    
+		    jt.setBounds(30,40,200,300);          
+		    JScrollPane sp=new JScrollPane(jt);    
+		    gui.manage_gui2(sp);          
+		   
+		     
 	}
 	
 	public  void printCellValue(Cell cell) {

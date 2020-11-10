@@ -2,6 +2,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 
 
@@ -30,6 +31,9 @@ public class Gui{
 		main_panel.add(panel);  // aqui adicionamos a nossa clase JPanel para JFrame
 	}
 	
+	public void manage_gui2(JScrollPane scroll_pane) {
+		main_panel.add(scroll_pane);  // aqui adicionamos a nossa clase JPanel para JFrame
+	}
 	public String getSelectedFile()  {  // objetiovo de sempre conseguir buscar o ficheiro EXCEL selecionado 1a
 		return selected_file;
 	}
