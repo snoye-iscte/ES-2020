@@ -32,7 +32,7 @@ public class getExcel extends JPanel {
 	private JButton browse;
 	private JLabel label = new JLabel("                                CODE SPELLS");
 	private Gui gui;
-	private String selected_excel = "C:\\Users\\ASUS\\Downloads\\Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
+	private String selected_excel = "D:\\NB26574\\Downloads\\Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
 	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	public getExcel(Gui gui) {
