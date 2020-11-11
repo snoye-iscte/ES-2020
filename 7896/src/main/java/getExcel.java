@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ddf.EscherColorRef.SysIndexSource;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -35,6 +36,8 @@ public class getExcel extends JPanel {
 	private String selected_excel = "C:\\Users\\ASUS\\Downloads\\Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
 	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
+	
+	
 	public getExcel(Gui gui) {
 		this.gui = gui;
 		browse = new JButton("Browse");
@@ -82,7 +85,9 @@ public class getExcel extends JPanel {
 	}
 	
 	
-	
+	public List<Defeito> getListaDefeitos(){
+		return lista_defeitos;
+	}
 
 	
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
@@ -179,17 +184,24 @@ public class getExcel extends JPanel {
 			           // lista_defeitos.add(o_defeito);
 			           
 			      //   System.out.println("rownumber " + rowIndex);
-			           
+				           
 			        }
 			        
-			       
-			        lista_defeitos.add(o_defeito);
+			        if(o_defeito.getMethod_ID() ==0) {
+				    	   System.out.println("tamanho da lista " + lista_defeitos.size());
+				       }else {
+				    	   lista_defeitos.add(o_defeito);
+				    	  // System.out.println(o_defeito);
+				       } 
+			      
+			        
+			      //  lista_defeitos.add(o_defeito);
 			       // System.out.println("lista defeitos size " + lista_defeitos.size());
 			      // System.out.println("row number " +row_number);
 			      
 			    }
 			  
-		//	 System.out.println(lista_defeitos.toString());
+			// System.out.println(lista_defeitos.toString());
 			    try {
 					workbook.close();
 				} catch (IOException e) {
@@ -200,14 +212,14 @@ public class getExcel extends JPanel {
 			    System.out.println(lista_defeitos.size() + "s");
 			 
 			   
-//			    for(int i = 0; i<20;i++) {
-//		        	 System.out.println(lista_defeitos.get(i));
-//		        	 
-//		         }
-			    for(String s : lista_com_titulos_das_colunas){
-			    	System.out.println(s);
-			    }
-//			    
+			    for(int i = 0; i<20;i++) {
+		        	 System.out.println(lista_defeitos.get(i));
+		        	 
+		         }
+//			    for(String s : lista_com_titulos_das_colunas){
+//			    	System.out.println(s);
+//			    }
+////			    
 //			    for(Defeito defeito : lista_defeitos) {
 //			    	System.out.println(defeito.getArray());
 //			    }
@@ -224,21 +236,18 @@ public class getExcel extends JPanel {
 		
 		String [][] data_from_excel = new String [lista_defeitos.size()][lista_com_titulos_das_colunas.size()];
 		
-		for(int i=1;i<data_from_excel.length;i++) {
+		for(int i=0;i<data_from_excel.length;i++) {
 			for(int j=0;j<data_from_excel[i].length;j++) {
 				data_from_excel[i][j]=lista_defeitos.get(i).getArray()[j];
 			}
 		}
 		   
-		    String data[][]={ {"101","Amit","670000"},    
-		                          {"102","Jai","780000"},    
-		                          {"101","Sachin","700000"}};    
-		    
+		 
 		  
 		    String column1 [] = ListToArray(lista_com_titulos_das_colunas);
-		    JTable jt=new JTable(data_from_excel,column1);    
-		    jt.setBounds(30,40,200,300);          
-		    JScrollPane sp=new JScrollPane(jt);    
+		    JTable j_table=new JTable(data_from_excel,column1);    
+		    j_table.setBounds(30,40,200,300);          
+		    JScrollPane sp=new JScrollPane(j_table);    
 		    gui.manage_gui2(sp);          
 		   
 		     
