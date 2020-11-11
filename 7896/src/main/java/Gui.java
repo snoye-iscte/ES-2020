@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
 
 
@@ -20,11 +21,14 @@ public class Gui{
 	}
 	
 	public void start() {
+		
 		frame.setVisible(true);
-		frame.setSize(600,600);
+		frame.setSize(900,1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		frame.add(main_panel);
 		main_panel.setLayout(new GridLayout(3,1));
+		
 	}
 	
 	public void manage_gui(JPanel panel) {
@@ -38,9 +42,7 @@ public class Gui{
 		return selected_file;
 	}
 	
-	public void guiUpdate() {
-		frame.setTitle(getSelectedFile());
-	}
+	
 	
 	
 	public void setSelectedFile(String text) { // objetivo de conseguir quardar numa String o ficheiro selecionado 1b

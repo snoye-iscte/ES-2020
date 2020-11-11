@@ -25,18 +25,18 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 
 public class getExcel extends JPanel {
-	private JButton browse;
-	private JLabel label = new JLabel("                                CODE SPELLS");
+	//private JButton browse;
+//	private JLabel label = new JLabel("                                CODE SPELLS");
 	private Gui gui;
-	private String selected_excel = "D:\\NB26574\\Downloads\\Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
+	private String selected_excel = "Ficheiros/Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
 	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	
 	
 	public getExcel(Gui gui) {
 		this.gui = gui;
-		browse = new JButton("Browse");
-		makeItAlive();
+	//	browse = new JButton("Browse");
+		//makeItAlive();
 		
 		try {
 			readFromFile();
@@ -46,38 +46,43 @@ public class getExcel extends JPanel {
 			e.printStackTrace();
 		}
 		passExcelDataToJavaTable();
+		
 	}
 	
 	public void addThings() { //adiciona elementos da SWING ao JPanel que depois vai ser usado na GUI
-		this.add(browse);
-		this.add(label);
-	}
-	
-	
-	
-	public void makeItAlive() { // adicionar sentinela ao nosso botao brawse
+//		this.add(browse);
+//		this.add(label);
 		
-		browse.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("YOU JUST CLICKED ON BROWSE BUTTON"); //just for testng can be deleted later
-				
-				 JFileChooser jfc = new JFileChooser(".");
-				 jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-				 int returnValue = jfc.showOpenDialog(null);
-				 
-				 if (returnValue == JFileChooser.APPROVE_OPTION) {
-					 File selectedFile = jfc.getSelectedFile();
-					 selected_excel = selectedFile.getAbsolutePath();  //neste momento o ficheiro foi escolhido
-					 //System.out.println("selected dir: " + selected_excel);
-					 
-					 gui.setSelectedFile(selectedFile.getAbsolutePath()); //diz a gui qual ficheiro foi adicionado
-					 gui.guiUpdate();
-				 }
-				//d
-			}
-		});
 	}
+	public void configurePanel() {
+		
+	}
+	
+	
+	
+//	public void makeItAlive() { // adicionar sentinela ao nosso botao brawse
+//		
+//		browse.addActionListener(new ActionListener() {
+//			
+//			public void actionPerformed(ActionEvent e) {
+//				System.out.println("YOU JUST CLICKED ON BROWSE BUTTON"); //just for testng can be deleted later
+//				
+//				 JFileChooser jfc = new JFileChooser(".");
+//				 jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//				 int returnValue = jfc.showOpenDialog(null);
+//				 
+//				 if (returnValue == JFileChooser.APPROVE_OPTION) {
+//					 File selectedFile = jfc.getSelectedFile();
+//					 selected_excel = selectedFile.getAbsolutePath();  //neste momento o ficheiro foi escolhido
+//					 //System.out.println("selected dir: " + selected_excel);
+//					 
+//					 gui.setSelectedFile(selectedFile.getAbsolutePath()); //diz a gui qual ficheiro foi adicionado
+//					// gui.guiUpdate();
+//				 }
+//				//d
+//			}
+//		});
+//	}
 	
 	
 	public List<Defeito> getListaDefeitos(){
@@ -245,7 +250,7 @@ public class getExcel extends JPanel {
 		    JScrollPane sp=new JScrollPane(j_table);    
 		    gui.manage_gui2(sp);          
 		   
-		     
+		    // gui.guiUpdate();
 	}
 	
 	public String [] ListToArray(List<String> lista_com_titulos) {
