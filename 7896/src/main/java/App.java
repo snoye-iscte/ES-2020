@@ -12,7 +12,7 @@ public class App
     	Gui gui = new Gui();
 		gui.start();
 		getExcel getE = new getExcel(gui);
-		getE.addThings();
+		
 		
 		gui.manage_gui(getE);
 		

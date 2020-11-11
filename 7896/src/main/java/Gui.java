@@ -12,6 +12,9 @@ public class Gui{
 	JPanel main_panel;
 	
 	String selected_file;
+//	browse = new JButton("Browse");
+		//makeItAlive();
+		
 	
 	public Gui() {
 		this.frame = new JFrame("ES");
@@ -35,7 +38,7 @@ public class Gui{
 		main_panel.add(panel);  // aqui adicionamos a nossa clase JPanel para JFrame
 	}
 	
-	public void manage_gui2(JScrollPane scroll_pane) {
+	public void addExcelTable(JScrollPane scroll_pane) {
 		main_panel.add(scroll_pane);  // aqui adicionamos a nossa clase JPanel para JFrame
 	}
 	public String getSelectedFile()  {  // objetiovo de sempre conseguir buscar o ficheiro EXCEL selecionado 1a
@@ -50,5 +53,30 @@ public class Gui{
 		///Gsdfs
 		//ola
 	}
+	
+	
+//	public void makeItAlive() { // adicionar sentinela ao nosso botao brawse
+//	
+//	browse.addActionListener(new ActionListener() {
+//		
+//		public void actionPerformed(ActionEvent e) {
+//			System.out.println("YOU JUST CLICKED ON BROWSE BUTTON"); //just for testng can be deleted later
+//			
+//			 JFileChooser jfc = new JFileChooser(".");
+//			 jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//			 int returnValue = jfc.showOpenDialog(null);
+//			 
+//			 if (returnValue == JFileChooser.APPROVE_OPTION) {
+//				 File selectedFile = jfc.getSelectedFile();
+//				 selected_excel = selectedFile.getAbsolutePath();  //neste momento o ficheiro foi escolhido
+//				 //System.out.println("selected dir: " + selected_excel);
+//				 
+//				 gui.setSelectedFile(selectedFile.getAbsolutePath()); //diz a gui qual ficheiro foi adicionado
+//				// gui.guiUpdate();
+//			 }
+//			//d
+//		}
+//	});
+//}
 	
 }
