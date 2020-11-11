@@ -4,17 +4,13 @@ public class App
 {
     public static void main( String[] args )
     {
-    	
-//    	String s = "sdfsdfs";
-//    	System.out.println("FUNIONA");
-//    	System.out.println(s);
-//    	
-    	Gui gui = new Gui();
+    	 	
+    	Gui gui = new Gui(new getExcel());
+		
 		gui.start();
-		getExcel getE = new getExcel(gui);
 		
 		
-		gui.manage_gui(getE);
+	
 		
 		
     }

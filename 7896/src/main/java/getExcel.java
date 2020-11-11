@@ -27,24 +27,23 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 public class getExcel extends JPanel {
 	private JButton browse;
     private JLabel label = new JLabel("                                CODE SPELLS");
-	
-    private Gui gui;
+	private JScrollPane scroll_pane_excel;
+    
 	private String selected_excel = "Ficheiros/Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
 	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	
 	
-	public getExcel(Gui gui) {
-		this.gui = gui;
-	
+	public getExcel() {
+		
 		try {
-			readFromFile();
+			readFromFile(selected_excel);
 			
 		} catch (EncryptedDocumentException | NullPointerException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		passExcelDataToJavaTable();
+		
 		
 	}
 	
@@ -60,9 +59,11 @@ public class getExcel extends JPanel {
 	
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
 
-	public void readFromFile() throws NullPointerException, EncryptedDocumentException, IOException{ // at the begining our file location is uknown, so wee need to use try catch or if
+	public void readFromFile(String selected_file) throws NullPointerException, EncryptedDocumentException, IOException{ // at the begining our file location is uknown, so wee need to use try catch or if
 		//Using a File object allows for lower memory consumption, while an InputStream requires more memory as it has to buffer the whole file.
-			    Workbook workbook = WorkbookFactory.create(new File(selected_excel));
+			   lista_com_titulos_das_colunas.clear();
+			   lista_defeitos.clear();
+				Workbook workbook = WorkbookFactory.create(new File(selected_file));
 			    Sheet firstSheet = workbook.getSheetAt(0);
 			    Iterator<Row> iterator = firstSheet.iterator();
 			    
@@ -118,14 +119,19 @@ public class getExcel extends JPanel {
 					         case 11:
 				            	if(rowIndex==0) {lista_com_titulos_das_colunas.add(nextCell.getStringCellValue());} else { o_defeito.setIs_feature_envy(nextCell.getBooleanCellValue());}break;
 					        }
+			            
+			            
 			           
+			     
+			        }
 			        if(o_defeito.getMethod_ID() ==0) {
 				    	   System.out.println("tamanho da lista " + lista_defeitos.size());
 				       }else {
 				    	   lista_defeitos.add(o_defeito);
 				    	} 
-			        }
 			    }
+			    
+			    
 			        try {
 			        	workbook.close();
 			        } catch (IOException e) {
@@ -138,6 +144,7 @@ public class getExcel extends JPanel {
 		        	 System.out.println(lista_defeitos.get(i));
 		        	 
 		         }
+			    passExcelDataToJavaTable();
 		
 		
 	}
@@ -157,12 +164,14 @@ public class getExcel extends JPanel {
 		    String column1 [] = ListToArray(lista_com_titulos_das_colunas);
 		    JTable j_table=new JTable(data_from_excel,column1);    
 		    j_table.setBounds(30,40,200,300);          
-		    JScrollPane scroll_pane = new JScrollPane(j_table);    
-		    gui.addExcelTable(scroll_pane);          
+		    scroll_pane_excel = new JScrollPane(j_table);    
+		            
 		   
 		    // gui.guiUpdate();
 	}
-	
+	public JScrollPane getScroolPaneExcel() {
+		return scroll_pane_excel;
+	}
 	public String [] ListToArray(List<String> lista_com_titulos) {
 		String [] first_column = new String[lista_com_titulos.size()];
 		for(int i=0;i<lista_com_titulos.size();i++) {
