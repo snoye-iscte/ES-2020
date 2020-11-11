@@ -20,9 +20,9 @@ public class Metrica {
 				break;
 			}
 		}
-		this.metricName = metricName;
-		this.metricIntegerValue = metricIntegerValue;
-		this.metricBooleanValue = metricBooleanValue;
+//		this.metricName = metricName;
+//		this.metricIntegerValue = metricIntegerValue;
+//		this.metricBooleanValue = metricBooleanValue;
 	}
 	
 	
