@@ -23,11 +23,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 
-
-
-//TY5
-
-
 public class getExcel extends JPanel {
 	private JButton browse;
 	private JLabel label = new JLabel("                                CODE SPELLS");
