@@ -7,8 +7,8 @@ public class QualityIndicators {
 	private int ADII;
 	private int count=0;
 	
-	private Defeito def = new Defeito();
-	private getExcel ge = new getExcel();
+	private Defeito defeito = new Defeito();
+	private getExcel get_excel = new getExcel();
 	
 	
 	public int getDCI() {
@@ -27,30 +27,30 @@ public class QualityIndicators {
 		return count;
 	}
 	public Defeito getDef() {
-		return def;
+		return defeito;
 	}
 	public getExcel getGe() {
-		return ge;
+		return get_excel;
 	}
 	private boolean isDCI(){
-		if((def.isPMD()||def.isiPlasma()) && def.isIs_long_method())
+		if((defeito.isPMD()||defeito.isiPlasma()) && defeito.isIs_long_method())
 				return true;
 		return false;
 		
 	}
 	private boolean isDII(){
-		if((def.isPMD()||def.isiPlasma()) && !def.isIs_long_method())
+		if((defeito.isPMD()||defeito.isiPlasma()) && !defeito.isIs_long_method())
 			return true;
 		return false;
 	}
 	private boolean isADCI(){
-		if((!def.isPMD()|| !def.isiPlasma()) && !def.isIs_long_method())
+		if((!defeito.isPMD()|| !defeito.isiPlasma()) && !defeito.isIs_long_method())
 			return true;
 		return false;
 		
 	}
 	private boolean isADII(){
-		if((!def.isPMD() || !def.isiPlasma()) && def.isIs_long_method())
+		if((!defeito.isPMD() || !defeito.isiPlasma()) && defeito.isIs_long_method())
 			return true ;
 		return false;
 		
@@ -59,7 +59,6 @@ public class QualityIndicators {
 
 	
 	public int countDCI(){
-		//for ( int  : iterable) {
 			if(isDCI())
 				count++;
 			return ADCI;

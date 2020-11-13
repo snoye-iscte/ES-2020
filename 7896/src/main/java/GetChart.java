@@ -16,7 +16,7 @@ import java.awt.EventQueue;
 
 public class GetChart extends JPanel {
 	
-	QualityIndicators qi = new QualityIndicators();
+	QualityIndicators quality_indicator = new QualityIndicators();
 	
 	
 	public void createChart() {
@@ -40,10 +40,10 @@ public class GetChart extends JPanel {
     private CategoryDataset createDataset() {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(qi.countDCI(), "Numero", "DCI");
-        dataset.setValue(qi.countDII(), "Numero", "DII");
-        dataset.setValue(qi.countADCI(), "Numero", "ADCI");
-        dataset.setValue(qi.countADII(), "Numero", "ADII");
+        dataset.setValue(quality_indicator.countDCI(), "Numero", "DCI");
+        dataset.setValue(quality_indicator.countDII(), "Numero", "DII");
+        dataset.setValue(quality_indicator.countADCI(), "Numero", "ADCI");
+        dataset.setValue(quality_indicator.countADII(), "Numero", "ADII");
 
         return dataset;
     }
