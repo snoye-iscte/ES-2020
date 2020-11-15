@@ -14,7 +14,7 @@ public class App
 		gui.manage_gui(regra);
 		
 		//DF
-	
+	int g= 3;
 		
 		
     }
