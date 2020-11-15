@@ -16,7 +16,7 @@ import java.awt.EventQueue;
 
 public class GetChart extends JPanel {
 	
-	QualityIndicators quality_indicator = new QualityIndicators();
+	private QualityIndicators quality_indicator = new QualityIndicators();
 	
 	
 	public void createChart() {
@@ -24,7 +24,7 @@ public class GetChart extends JPanel {
         initUI();
     }
 
-    private void initUI() {
+    public void initUI() {
 
         CategoryDataset dataset = createDataset();
 
@@ -32,12 +32,13 @@ public class GetChart extends JPanel {
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         chartPanel.setBackground(Color.white);
-        add(chartPanel);
+        chartPanel.setVisible(true); //adicionado por Sergiy
+        this.add(chartPanel);
 
      
     }
 
-    private CategoryDataset createDataset() {
+    public CategoryDataset createDataset() {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(quality_indicator.countDCI(), "Numero", "DCI");
@@ -48,7 +49,7 @@ public class GetChart extends JPanel {
         return dataset;
     }
 
-    private JFreeChart createChart(CategoryDataset dataset) {
+    public JFreeChart createChart(CategoryDataset dataset) {
 
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Indicadores de Qualidade",
