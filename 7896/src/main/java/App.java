@@ -13,7 +13,7 @@ public class App
 		Regra regra = new  Regra(get_excel.getListaDefeitos());
 		gui.manage_gui(regra);
 		
-		
+		//DF
 	
 		
 		
