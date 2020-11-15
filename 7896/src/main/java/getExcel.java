@@ -66,14 +66,20 @@ public class getExcel extends JPanel {
 				Workbook workbook = WorkbookFactory.create(new File(selected_file));
 			    Sheet firstSheet = workbook.getSheetAt(0);
 			    Iterator<Row> iterator = firstSheet.iterator();
-			    
+			    int i =0;
 			    while (iterator.hasNext()) {
+			    
 			    	Row nextRow = iterator.next();
 			        Iterator<Cell> cellIterator = nextRow.cellIterator();
 			        Defeito o_defeito = new Defeito();
 			       
 			        while (cellIterator.hasNext() ) {
-			            Cell nextCell = cellIterator.next();
+			        	
+			        	//ystem.out.println();
+			            
+			        	Cell nextCell = cellIterator.next();
+			        	
+			        	
 			            int rowIndex = nextCell.getRowIndex();
 			            int columnIndex = nextCell.getColumnIndex();
 				  
@@ -125,9 +131,10 @@ public class getExcel extends JPanel {
 			     
 			        }
 			        if(o_defeito.getMethod_ID() ==0) {
-				    	   System.out.println("tamanho da lista " + lista_defeitos.size());
-				       }else {
-				    	   lista_defeitos.add(o_defeito);
+				    	 //  System.out.println("tamanho da lista " + lista_defeitos.size());
+			        	
+			        }else {
+			        	lista_defeitos.add(o_defeito);   
 				    	} 
 			    }
 			    
@@ -137,15 +144,11 @@ public class getExcel extends JPanel {
 			        } catch (IOException e) {
 			        	e.printStackTrace();
 			        }
-			     System.out.println(lista_defeitos.size() + "s");
-			 
+			     
+			
 			   
-			    for(int i = 0; i<20;i++) {
-		        	 System.out.println(lista_defeitos.get(i));
-		        	 
-		         }
 			    passExcelDataToJavaTable();
-		
+			    System.out.println("tmanho: " +  lista_defeitos.size());
 		
 	}
 	
