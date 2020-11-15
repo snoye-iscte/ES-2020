@@ -1,9 +1,12 @@
+import java.util.List;
 
-public class Regra {
+import javax.swing.JPanel;
+
+public class Regra extends JPanel {
 	
 	
 
-	public Regra() {
+	public Regra(List<Defeito> defeitos) {
 		// TODO Auto-generated constructor stub
 	}
 

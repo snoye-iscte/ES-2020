@@ -22,6 +22,10 @@ public class Gui{
 	String selected_file = "Ficheiros/Defeitos.xlsx";;
 //	browse = new JButton("Browse");
 		//makeItAlive();
+	
+	
+	GetChart get_chart = new GetChart();
+	
 		
 	
 	public Gui(getExcel get_excel) {
@@ -47,8 +51,10 @@ public class Gui{
 	
 	public void config1() {
 		makeItAlive();
-		main_panel.add(button_browse);
+		main_panel.add(get_chart);
+		//main_panel.add(button_browse);
 		main_panel.add(get_excel.getScroolPaneExcel());
+		
 	}
 	
 	public void manage_gui(JPanel panel) {

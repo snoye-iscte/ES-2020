@@ -25,7 +25,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 
 public class getExcel extends JPanel {
-	private JButton browse;
+	
     private JLabel label = new JLabel("                                CODE SPELLS");
 	private JScrollPane scroll_pane_excel;
     
@@ -172,6 +172,8 @@ public class getExcel extends JPanel {
 	public JScrollPane getScroolPaneExcel() {
 		return scroll_pane_excel;
 	}
+	
+	
 	public String [] ListToArray(List<String> lista_com_titulos) {
 		String [] first_column = new String[lista_com_titulos.size()];
 		for(int i=0;i<lista_com_titulos.size();i++) {
