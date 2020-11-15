@@ -1,30 +1,19 @@
-import java.awt.List;
-import java.util.ArrayList;
-
 public class Metrica {
 	
-	private getExcel getExcel;
-	private String metricName;
-	private int metricIntegerValue;
-	private boolean metricBooleanValue;
-	private Defeito defeito;
+	private String nome_da_metrica;
+	private int valor_da_metrica;
 	
-	public Metrica(ArrayList<Defeito> listaDefeitos) {
-		for(Defeito defeito: listaDefeitos) {
-			switch (defeito.getClass_name()) {
-			case "LOC":
-				
-				break;
-
-			default:
-				break;
-			}
-		}
-//		this.metricName = metricName;
-//		this.metricIntegerValue = metricIntegerValue;
-//		this.metricBooleanValue = metricBooleanValue;
+	public Metrica(String nome, int valor) {
+		this.nome_da_metrica = nome;
+		this.valor_da_metrica = valor;
 	}
-	
-	
+
+	public String getNome_da_metrica() {
+		return nome_da_metrica;
+	}
+
+	public int getValor_da_metrica() {
+		return valor_da_metrica;
+	}
+
 }
- 
