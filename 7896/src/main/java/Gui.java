@@ -22,6 +22,9 @@ public class Gui{
 	String selected_file = "Ficheiros/Defeitos.xlsx";;
 //	browse = new JButton("Browse");
 		//makeItAlive();
+	
+	
+		
 		
 	
 	public Gui(getExcel get_excel) {
@@ -29,6 +32,10 @@ public class Gui{
 		main_panel = new JPanel();
 		start();
 		
+		
+	}
+	public void addChart(JPanel panel) {
+		main_panel.add(panel);
 	}
 	
 	public void start() {
@@ -39,7 +46,7 @@ public class Gui{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.add(main_panel);
-		main_panel.setLayout(new GridLayout(3,1));
+		main_panel.setLayout(new GridLayout(5,1));
 		config1();
 		
 		
@@ -47,8 +54,9 @@ public class Gui{
 	
 	public void config1() {
 		makeItAlive();
-		main_panel.add(button_browse);
+		//main_panel.add(button_browse);
 		main_panel.add(get_excel.getScroolPaneExcel());
+		
 	}
 	
 	public void manage_gui(JPanel panel) {
@@ -110,5 +118,8 @@ public class Gui{
 		}
 	});
 }
+	public void manage_gui(Regra regra) {
+		main_panel.add(regra);
+	}
 	
 }
