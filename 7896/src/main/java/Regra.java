@@ -78,7 +78,7 @@ public class Regra extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for(Defeito defeito : list_Defeitos) {
-					
+//					int
 				}
 				
 			}
