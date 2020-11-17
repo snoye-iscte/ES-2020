@@ -1,9 +1,16 @@
+import java.util.List;
 
-public class CodeSmellDetection {
+import javax.swing.JPanel;
 
+public class CodeSmellDetection extends JPanel{
 
-	public void detecionResult() {
-
+	public CodeSmellDetection() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void detectionResult() {
+		
 	}
 
+	
 }

@@ -85,6 +85,75 @@ public class Regra extends JPanel {
 			}
 		});
 	}
+
+	public JButton getButton() {
+		return button;
+	}
+
+	public void setButton(JButton button) {
+		this.button = button;
+	}
+
+	public JComboBox<String> getComboBox_defeitos1() {
+		return comboBox_defeitos1;
+	}
+
+	public void setComboBox_defeitos1(JComboBox<String> comboBox_defeitos1) {
+		this.comboBox_defeitos1 = comboBox_defeitos1;
+	}
+
+	public JComboBox<String> getComboBox_defeitos2() {
+		return comboBox_defeitos2;
+	}
+
+	public void setComboBox_defeitos2(JComboBox<String> comboBox_defeitos2) {
+		this.comboBox_defeitos2 = comboBox_defeitos2;
+	}
+
+	public JComboBox<String> getComboBox_defeitos3() {
+		return comboBox_defeitos3;
+	}
+
+	public void setComboBox_defeitos3(JComboBox<String> comboBox_defeitos3) {
+		this.comboBox_defeitos3 = comboBox_defeitos3;
+	}
+
+	public JComboBox<String> getComboBox_operadores() {
+		return comboBox_operadores;
+	}
+
+	public void setComboBox_operadores(JComboBox<String> comboBox_operadores) {
+		this.comboBox_operadores = comboBox_operadores;
+	}
+
+	public JTextField getTextField_threshold1() {
+		return textField_threshold1;
+	}
+
+	public void setTextField_threshold1(JTextField textField_threshold1) {
+		this.textField_threshold1 = textField_threshold1;
+	}
+
+	public JTextField getTextField_threshold2() {
+		return textField_threshold2;
+	}
+
+	public void setTextField_threshold2(JTextField textField_threshold2) {
+		this.textField_threshold2 = textField_threshold2;
+	}
+
+	public List<Defeito> getList_Defeitos() {
+		return list_Defeitos;
+	}
+
+	public void setList_Defeitos(List<Defeito> list_Defeitos) {
+		this.list_Defeitos = list_Defeitos;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 	
 }
