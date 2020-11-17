@@ -85,4 +85,6 @@ public class Regra extends JPanel {
 			}
 		});
 	}
+	
+	
 }

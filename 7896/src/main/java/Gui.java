@@ -31,8 +31,6 @@ public class Gui{
 		this.frame = new JFrame("ES");
 		main_panel = new JPanel();
 		start();
-		
-		
 	}
 	public void addChart(JPanel panel) {
 		main_panel.add(panel);
