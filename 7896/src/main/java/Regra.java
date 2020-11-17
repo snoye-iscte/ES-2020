@@ -28,6 +28,7 @@ public class Regra extends JPanel {
 		inicializar_operadores();
 		inicializar_comboBox3();
 		inicializar_threshold2();
+		button_function();
 	}
 
 	private void inicializar_comboBox1() {
@@ -60,13 +61,13 @@ public class Regra extends JPanel {
 	}
 	
 	private void inicializar_threshold1() {
-		this.textField_threshold1 = new JTextField();
+		this.textField_threshold1 = new JTextField(3);
 		textField_threshold1.setEditable(true);
 		this.add(textField_threshold1);
 	}
 	
 	private void inicializar_threshold2() {
-		this.textField_threshold2 = new JTextField();
+		this.textField_threshold2 = new JTextField(3);
 		textField_threshold2.setEditable(true);
 		this.add(textField_threshold2);
 	}
