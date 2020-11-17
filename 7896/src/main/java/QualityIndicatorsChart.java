@@ -1,56 +1,31 @@
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.ui.Size2D;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import java.awt.Color;
 
-public class GetChart extends JPanel {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1559303423044700192L;
-	private QualityIndicators quality_indicator = new QualityIndicators();
-	
-	
-	public void createChart() {
-		
-        initUI();
-    }
+public class QualityIndicatorsChart extends JPanel {
 
-    public void initUI() {
-
-        CategoryDataset dataset = createDataset();
-
+    public QualityIndicatorsChart(QualityIndicators dataset) {
         JFreeChart chart = createChart(dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+        chartPanel.setBorder(BorderFactory.createEmptyBorder(100,100,100,100));
         chartPanel.setBackground(Color.white);
-        chartPanel.setVisible(true); //adicionado por Sergiy
-        this.add(chartPanel);
-
-     
+        add(chartPanel);
+        chartPanel.setVisible(true);
     }
-
-    public CategoryDataset createDataset() {
-
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(quality_indicator.countDCI(), "Numero", "DCI");
-        dataset.setValue(quality_indicator.countDII(), "Numero", "DII");
-        dataset.setValue(quality_indicator.countADCI(), "Numero", "ADCI");
-        dataset.setValue(quality_indicator.countADII(), "Numero", "ADII");
-
-        return dataset;
-    }
-
-    public JFreeChart createChart(CategoryDataset dataset) {
-
+    
+	/**
+	 * 
+	 * @param dataset
+	 * @return barchart , 
+	 */
+    private JFreeChart createChart(CategoryDataset dataset) {
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Indicadores de Qualidade",
                 "",
@@ -61,7 +36,5 @@ public class GetChart extends JPanel {
 
         return barChart;
     }
-
-
-    
-}
+   
+}  

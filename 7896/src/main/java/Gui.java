@@ -18,16 +18,15 @@ public class Gui{
 	private JFrame frame;
 	private JPanel main_panel;
 	private JButton button_browse = new JButton("Browse");
-	private getExcel get_excel = new getExcel();
-	String selected_file = "Ficheiros/Defeitos.xlsx";;
+	private GetExcel get_excel = new GetExcel();
+	String selected_file = "C:\\Users\\Proprietario\\Desktop\\defeitos2.xlsx";;
 //	browse = new JButton("Browse");
 		//makeItAlive();
 	
-	
 		
-		
+
 	
-	public Gui(getExcel get_excel) {
+	public Gui(GetExcel get_excel) {
 		this.frame = new JFrame("ES");
 		main_panel = new JPanel();
 		start();
@@ -41,12 +40,13 @@ public class Gui{
 	public void start() {
 		
 		frame.setVisible(true);
-		frame.setSize(900,1000);
+		frame.setSize(900,900);
 		frame.setTitle(selected_file);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.add(main_panel);
-		main_panel.setLayout(new GridLayout(5,1));
+		main_panel.setLayout(new GridLayout(1,1));
 		config1();
 		
 		
@@ -55,13 +55,13 @@ public class Gui{
 	public void config1() {
 		makeItAlive();
 		//main_panel.add(button_browse);
-		main_panel.add(get_excel.getScroolPaneExcel());
+		//main_panel.add(get_excel.getScroolPaneExcel());
 		
 	}
 	
-	public void manage_gui(JPanel panel) {
-		main_panel.add(panel);  // aqui adicionamos a nossa clase JPanel para JFrame
-	}
+//	public void manage_gui(JPanel panel) {
+//		main_panel.add(panel);  // aqui adicionamos a nossa clase JPanel para JFrame
+//	}
 	
 	public void addExcelTable(JScrollPane scroll_pane) {
 		main_panel.add(scroll_pane);  // aqui adicionamos a nossa clase JPanel para JFrame

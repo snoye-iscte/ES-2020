@@ -4,7 +4,8 @@ public class App
 {
     public static void main( String[] args )
     {
-
+    	//* A classe GUI deve receber a classe Excel, uma classe de interação (alterar os thresholds) e
+   	 // a classe QualityIndicators.
     	
     	GetExcel excel = new GetExcel();
     	List<Defeito> defeitos = excel.getListaDefeitos();
