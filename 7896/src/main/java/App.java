@@ -1,21 +1,21 @@
-
+import java.util.List;
 
 public class App 
 {
     public static void main( String[] args )
     {
-    	 	
-    	getExcel get_excel = new getExcel();
+    	//* A classe GUI deve receber a classe Excel, uma classe de interação (alterar os thresholds) e
+   	 // a classe QualityIndicators.
+    	
+    	getExcel excel = new getExcel();
+    	List<Defeito> defeitos = excel.getListaDefeitos();
+		Regra regra = new Regra(defeitos);
+    	QualityIndicators qIndicators = new QualityIndicators(defeitos);
+    	QualityIndicatorsChart QIChart = new QualityIndicatorsChart(qIndicators);
 	 	
-    	Gui gui = new Gui(get_excel);
-		
+    	Gui gui = new Gui(excel);
 		gui.start();
-		Regra regra = new  Regra(get_excel.getListaDefeitos());
 		gui.manage_gui(regra);
-		
-		//DF
-	int g= 3;
-		
-		
+		gui.addChart(QIChart);
     }
 }
