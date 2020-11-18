@@ -15,7 +15,8 @@ public class App
 	 	
     	Gui gui = new Gui(excel);
 		gui.start();
-		gui.manage_gui(regra);
+		gui.addPanelRegra(regra);
 		gui.addChart(QIChart);
+		gui.pack();
     }
 }
