@@ -26,18 +26,15 @@ public class CodeSmellDetection extends JPanel{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean isLongMethod() {
-		metricas.addAll(Arrays.asList("LOC", "CYCLO", "ATFD", "LAA"));
-		defeitos.addAll(Arrays.asList("is_long_method", "iPlasma", "PMDD", "is_feature_envy"));
+	public boolean isLongMethod(int loc_threshold, int cyclo_threshold, Defeito defeito) {
+	
 
 		boolean is_long_method = false;
 
-		for(String defeito: defeitos) {
-			if(defeito.equals("is_long_method")) {
-				if(LOC >80 && CYCLO > 10)
+				if(defeito.getLOC() > loc_threshold && defeito.getCYCLO() > cyclo_threshold)
 					is_long_method = true;
-			}
-		}
+			
+		
 		return is_long_method;
 	}
 	
