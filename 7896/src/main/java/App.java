@@ -1,21 +1,13 @@
 
+public class App {
+	public static void main( String[] args ) {
+		getExcel get_excel = new getExcel();
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-    	 	
-    	getExcel get_excel = new getExcel();
-	 	
-    	Gui gui = new Gui(get_excel);
-		
+		Gui gui = new Gui(get_excel);
+
 		gui.start();
 		Regra regra = new  Regra(get_excel.getListaDefeitos());
 		gui.manage_gui(regra);
-		
-		//DF
-	int g= 3;
-		
-		
-    }
+		int g= 3;
+	}
 }
