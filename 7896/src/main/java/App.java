@@ -7,7 +7,7 @@ public class App {
 
 		gui.start();
 		Regra regra = new  Regra(get_excel.getListaDefeitos());
-		gui.manage_gui(regra);
+		//gui.manage_gui(regra);
 		int g= 3;
 	}
 }
