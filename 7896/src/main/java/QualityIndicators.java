@@ -1,56 +1,96 @@
-import java.util.Iterator;
-import java.util.List;
 
-import org.jfree.data.category.DefaultCategoryDataset;
+public class QualityIndicators {
 
-public class QualityIndicators extends DefaultCategoryDataset {
-	private int iPlasma;
-	private int PMD;
 	private int DCI;
 	private int DII;
 	private int ADCI;
 	private int ADII;
+	private int count=0;
 	
-	/**
-	 * 
-	 * @param defect
-	 */
-	//public QualityIndicators(List<ExcelLine> lines) {
-	public QualityIndicators(List<Defeito> lines) {
+	private Defeito defeito = new Defeito();
+	private getExcel get_excel = new getExcel();
+	
+	
+	public int getDCI() {
+		return DCI;
+	}
+	public int getDII() {
+		return DII;
+	}
+	public int getADCI() {
+		return ADCI;
+	}
+	public int getADII() {
+		return ADII;
+	}
+	public int getCount() {
+		return count;
+	}
+	public Defeito getDef() {
+		return defeito;
+	}
+	public getExcel getGe() {
+		return get_excel;
+	}
+	private boolean isDCI(){
+		if((defeito.isPMD()||defeito.isiPlasma()) && defeito.isIs_long_method())
+				return true;
+		return false;
 		
-		// Inicializar variáveis a zero
-		iPlasma = 0;
-		PMD = 0;
-		DCI = 0;
-		DII = 0;
-		ADCI = 0;
-		ADII = 0;
+	}
+	private boolean isDII(){
+		if((defeito.isPMD()||defeito.isiPlasma()) && !defeito.isIs_long_method())
+			return true;
+		return false;
+	}
+	private boolean isADCI(){
+		if((!defeito.isPMD()|| !defeito.isiPlasma()) && !defeito.isIs_long_method())
+			return true;
+		return false;
 		
-		// Gerar indicadores de qualidade
+	}
+	private boolean isADII(){
+		if((!defeito.isPMD() || !defeito.isiPlasma()) && defeito.isIs_long_method())
+			return true ;
+		return false;
 		
-		Iterator<Defeito> linesIterator = lines.iterator();
-		while(linesIterator.hasNext()) {
-			Defeito line = (Defeito) linesIterator.next();
+	}
+	
 
+	
+	public int countDCI(){
+			if(isDCI())
+				count++;
+			return ADCI;
 			
-			iPlasma += line.isiPlasma() ? 1 :0;
-			PMD += line.isPMD() ? 1 :0;
-			DCI += (line.isPMD() || line.isiPlasma()) && line.isIs_long_method() ? 1 : 0;
-			DII += (line.isPMD() || line.isiPlasma()) && !line.isIs_long_method() ? 1 : 0;
-			ADCI += (!line.isPMD() || !line.isiPlasma()) && !line.isIs_long_method() ? 1 : 0;
-			ADII += (!line.isPMD() || !line.isiPlasma()) && line.isIs_long_method() ? 1 : 0;
+			
 			
 		}
-		
-		
-		// Create dataset
-        setValue(iPlasma, "Numero", "iPlasma");
-        setValue(PMD, "Numero", "PMD");
-        setValue(DCI, "Numero", "DCI");
-        setValue(DII, "Numero", "DII");
-        setValue(ADCI, "Numero", "ADCI");
-        setValue(ADII, "Numero", "ADII");
-	}
-}
-
 	
+	
+	
+	
+	public int countDII(){
+		if(isDII())
+			count++;
+		
+		return ADCI;
+		
+	}
+
+	public int countADCI(){
+
+		if(isDCI())
+			count++;
+		return ADCI;
+	
+	}
+
+	public int countADII(){
+		if(isDCI())
+			count++;
+		return ADCI;
+	
+	}
+	
+}
