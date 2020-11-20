@@ -11,18 +11,14 @@ public class CodeSmellDetection extends JPanel{
 		// TODO Auto-generated constructor stub
 	}
 
-	public boolean isFeatureEnvy(int atfdTheshold, int laaThreshold, Defeito defect) {
-		boolean is_feature_envy = false;
-		if(defect.getATFD() > 4 && defect.getLAA() < 0.428571) 
-			is_feature_envy = true;
-		return is_feature_envy;
+	public boolean isFeatureEnvy(int atfdTheshold, int laaThreshold, Defeito2 defect) {
+		return (defect.ATFD > 4 && defect.LAA < 0.428571) ;
+	
 	}
 
-	public boolean isLongMethod(int loc_threshold, int cyclo_threshold, Defeito defeito) {
-		boolean is_long_method = false;
-		if(defeito.getLOC() > loc_threshold && defeito.getCYCLO() > cyclo_threshold)
-			is_long_method = true;
-		return is_long_method;
+	public boolean isLongMethod(int loc_threshold, int cyclo_threshold, Defeito2 defect) {
+		return (defect.LOC> loc_threshold && defect.CYCLO > cyclo_threshold);
+		
 	}
 
 	//	public boolean isFeatureEnvy() {

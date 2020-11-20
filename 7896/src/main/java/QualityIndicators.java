@@ -15,8 +15,8 @@ public class QualityIndicators extends DefaultCategoryDataset {
 	 * 
 	 * @param defect
 	 */
-	//public QualityIndicators(List<ExcelLine> lines) {
-	public QualityIndicators(List<Defeito> lines) {
+	
+	public QualityIndicators(List<Defeito2> lines) {
 		
 		// Inicializar variáveis a zero
 		iPlasma = 0;
@@ -28,18 +28,17 @@ public class QualityIndicators extends DefaultCategoryDataset {
 		
 		// Gerar indicadores de qualidade
 		
-		Iterator<Defeito> linesIterator = lines.iterator();
+		Iterator<Defeito2> linesIterator = lines.iterator();
 		while(linesIterator.hasNext()) {
-			Defeito line = (Defeito) linesIterator.next();
+			Defeito2 line = (Defeito2) linesIterator.next();
 
 			
-			iPlasma += line.isiPlasma() ? 1 :0;
-			PMD += line.isPMD() ? 1 :0;
-			DCI += (line.isPMD() || line.isiPlasma()) && line.isIs_long_method() ? 1 : 0;
-			DII += (line.isPMD() || line.isiPlasma()) && !line.isIs_long_method() ? 1 : 0;
-			ADCI += (!line.isPMD() || !line.isiPlasma()) && !line.isIs_long_method() ? 1 : 0;
-			ADII += (!line.isPMD() || !line.isiPlasma()) && line.isIs_long_method() ? 1 : 0;
-			
+			iPlasma += line.iPlasma ? 1 : 0;
+			PMD += line.PMD ? 1 : 0;
+			DCI += (line.PMD || line.iPlasma) && line.is_long_method ? 1 : 0;
+			DII += (line.PMD || line.iPlasma) && !line.is_long_method ? 1 : 0;
+			ADCI += (!line.PMD || !line.iPlasma) && !line.is_long_method ? 1 : 0;
+			ADII += (!line.PMD || !line.iPlasma) && line.is_long_method ? 1 : 0;
 		}
 		
 		

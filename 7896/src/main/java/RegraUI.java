@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Regra extends JPanel {
+public class RegraUI extends JPanel {
 	/**
 	 * 
 	 */
@@ -24,10 +24,10 @@ public class Regra extends JPanel {
 	JScrollPane scroll_for_text_area = new JScrollPane(text_area);
 	private JComboBox<String> comboBox_defeitos1, comboBox_defeitos2, comboBox_defeitos3, comboBox_operadores;
 	private  JTextField textField_threshold1, textField_threshold2; 
-	private List<Defeito> list_Defeitos;
+	private List<Defeito2> list_Defeitos;
 	private CodeSmellDetection code_smell_detection = new CodeSmellDetection();
 
-	public Regra(List<Defeito> list) {
+	public RegraUI(List<Defeito2> list) {
 		this.list_Defeitos = list;
 		inicializar_Regra();
 	}
@@ -95,14 +95,14 @@ public class Regra extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(Defeito defeito : list_Defeitos) {
+				for(Defeito2 defeito : list_Defeitos) {
 					if(comboBox_defeitos1.getSelectedItem().toString() == "Long Method") {
 						if(code_smell_detection.isLongMethod(Integer.parseInt(textField_threshold1.getText()),Integer.parseInt(textField_threshold2.getText()),defeito)) {
-							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_long_method tool \n");
+							text_area.append("CodeSmell Detected on MethodId: " + defeito.method_ID + " using is_long_method tool \n");
 						}
 					}else if(comboBox_defeitos1.getSelectedItem().toString().equals("Feature Envy")) {
 						code_smell_detection.isFeatureEnvy(Integer.parseInt(textField_threshold1.getText()), Integer.parseInt(textField_threshold2.getText()), defeito);
-						text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
+						text_area.append("CodeSmell Detected on MethodId: " + defeito.method_ID + " using is_feature_envy tool \n");
 					}
 				}
 			}
@@ -161,11 +161,11 @@ public class Regra extends JPanel {
 		this.textField_threshold2 = textField_threshold2;
 	}
 
-	public List<Defeito> getList_Defeitos() {
+	public List<Defeito2> getList_Defeitos() {
 		return list_Defeitos;
 	}
 
-	public void setList_Defeitos(List<Defeito> list_Defeitos) {
+	public void setList_Defeitos(List<Defeito2> list_Defeitos) {
 		this.list_Defeitos = list_Defeitos;
 	}
 

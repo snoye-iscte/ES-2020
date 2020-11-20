@@ -24,17 +24,18 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 
-public class getExcel extends JPanel {
+public class GetExcel<Defeito2> extends JPanel {
 	
     private JLabel label = new JLabel("                                CODE SPELLS");
 	private JScrollPane scroll_pane_excel;
     
 	private String selected_excel = "Ficheiros/Defeitos.xlsx"; // guarda o nome do ficheiro ecxel selecionado
 	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
+	private List<Defeito2> lista_defeitos2 = new ArrayList<Defeito2>();
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	
 	//h
-	public getExcel() {
+	public GetExcel() {
 		
 		try {
 			readFromFile(selected_excel);
@@ -56,6 +57,9 @@ public class getExcel extends JPanel {
 		return lista_defeitos;
 	}
 
+	public List<Defeito2> getDefts(){
+		return lista_defeitos2;
+	}
 	
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
 
