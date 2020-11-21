@@ -12,12 +12,12 @@ public class CodeSmellDetection extends JPanel{
 	}
 
 	public boolean isFeatureEnvy(int atfdTheshold, int laaThreshold, Defeito2 defect) {
-		return (defect.ATFD > 4 && defect.LAA < 0.428571) ;
+		return !(defect.ATFD > 4 && defect.LAA < 0.428571) ;
 	
 	}
 
 	public boolean isLongMethod(int loc_threshold, int cyclo_threshold, Defeito2 defect) {
-		return (defect.LOC> loc_threshold && defect.CYCLO > cyclo_threshold);
+		return !(defect.LOC> loc_threshold && defect.CYCLO > cyclo_threshold);
 		
 	}
 
