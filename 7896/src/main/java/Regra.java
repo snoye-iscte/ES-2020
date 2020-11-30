@@ -27,11 +27,21 @@ public class Regra extends JPanel {
 	private List<Defeito> list_Defeitos;
 	private CodeSmellDetection code_smell_detection = new CodeSmellDetection();
 
+	/**
+	 * @param list
+	 * 
+	 * Este construtor instancia o objecto Regra, permitindo a sua vizualização na 
+	 * interface gráfica da aplicação e a possível detecção de code smells.
+	 */
 	public Regra(List<Defeito> list) {
 		this.list_Defeitos = list;
 		inicializar_Regra();
 	}
 
+	/**
+	 * Este método cria a estrutura da Regra e as suas funcionalidades na interface 
+	 * gráfica da aplicação.
+	 */
 	public void inicializar_Regra() {
 		this.setLayout(new BorderLayout());
 		inicializar_comboBox1();
