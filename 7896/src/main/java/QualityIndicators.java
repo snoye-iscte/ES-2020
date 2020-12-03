@@ -13,7 +13,7 @@ public class QualityIndicators extends DefaultCategoryDataset {
 	
 	/**
 	 * Quality Indicators Class. It while iterate across Excel cells and add some of the indicated values. 
-	 * 
+	 * bla bla bla
 	 * @author Pedro
 	 * @param defect,  ArrayList of the attributes we want to select and count. 
 	 */
