@@ -9,6 +9,15 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 
+
+
+/**
+ * 
+ * Initicialize a Chart with QI dataset and builds some caratcteristcs such as space between borders and sets a color for the background. 
+ * 
+ * @author Pedro
+ * @param dataset
+ */
 public class QualityIndicatorsChart extends JPanel {
 
     public QualityIndicatorsChart(QualityIndicators dataset) {
@@ -20,11 +29,21 @@ public class QualityIndicatorsChart extends JPanel {
         chartPanel.setVisible(true);
     }
     
-	/**
+	
+    /**
 	 * 
-	 * @param dataset
-	 * @return barchart , 
+
+	 * This method Creates a bar chart. The chart object returned by this method uses a CategoryPlot instance as the plot, with a CategoryAxis for the domain axis, a NumberAxis as the range axis, and a BarRenderer as the renderer.
+	 * createBarChart(String title, String categoryAxisLabel, String valueAxisLabel, CategoryDataset dataset,
+	 * PlotOrientation orientation, 
+	 * boolean legend, boolean tooltips, boolean urls)
+	 * 
+	 * 
+	 * @author Pedro
+	 * @param dataset,  from class CategoryDataset
+	 * @return barchart
 	 */
+    
     private JFreeChart createChart(CategoryDataset dataset) {
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Indicadores de Qualidade",
