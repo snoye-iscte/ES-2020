@@ -31,7 +31,7 @@ public class QualityIndicatorsChart extends JPanel {
     
 	
     /**
-	 *  
+	 * ......
 	 * This method Creates a bar chart. The chart object returned by this method uses a CategoryPlot instance as the plot, with a CategoryAxis for the domain axis, a NumberAxis as the range axis, and a BarRenderer as the renderer.
 	 * createBarChart(String title, String categoryAxisLabel, String valueAxisLabel, CategoryDataset dataset,
 	 * PlotOrientation orientation, 

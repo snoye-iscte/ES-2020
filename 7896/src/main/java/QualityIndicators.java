@@ -12,6 +12,7 @@ public class QualityIndicators extends DefaultCategoryDataset {
 	private int ADII;
 	
 	/**
+	 * ...
 	 * Quality Indicators Class. It while iterate across Excel cells and add some of the indicated values. 
 	 * bla bla bla
 	 * @author Pedro
