@@ -10,18 +10,21 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 
 
+public class QualityIndicatorsChart extends JPanel implements QualityIndicatorsChartInterface {
 
-/**
- * 
- * Initicialize a Chart with QI dataset and builds some caratcteristcs such as space between borders and sets a color for the background. 
- * 
- * @author Pedro
- * @param dataset
- */
-public class QualityIndicatorsChart extends JPanel {
-
-    public QualityIndicatorsChart(QualityIndicators dataset) {
-        JFreeChart chart = createChart(dataset);
+    public QualityIndicatorsChart(QualityIndicators qi) {
+        setChart(qi);
+    }   
+    /**
+     * 
+     * Initicialize a Chart with QI dataset and builds some caratcteristcs such as space between borders and sets a color for the background. 
+     * 
+     * @author Pedro
+     * @param dataset
+     * 
+     **/
+    private void setChart(QualityIndicators dataset) {
+    	JFreeChart chart = createChart(dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setBorder(BorderFactory.createEmptyBorder(100,100,100,100));
         chartPanel.setBackground(Color.white);
@@ -31,7 +34,6 @@ public class QualityIndicatorsChart extends JPanel {
     
 	
     /**
-	 * ......
 	 * This method Creates a bar chart. The chart object returned by this method uses a CategoryPlot instance as the plot, with a CategoryAxis for the domain axis, a NumberAxis as the range axis, and a BarRenderer as the renderer.
 	 * createBarChart(String title, String categoryAxisLabel, String valueAxisLabel, CategoryDataset dataset,
 	 * PlotOrientation orientation, 
@@ -42,7 +44,6 @@ public class QualityIndicatorsChart extends JPanel {
 	 * @param dataset,  from class CategoryDataset
 	 * @return barchart
 	 */
-    
     private JFreeChart createChart(CategoryDataset dataset) {
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Indicadores de Qualidade",
@@ -54,5 +55,10 @@ public class QualityIndicatorsChart extends JPanel {
 
         return barChart;
     }
-   
+    
+    @Override
+    public void update(QualityIndicators qi) {
+		setChart(qi);
+	}
+	
 }  

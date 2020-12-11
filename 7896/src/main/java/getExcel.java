@@ -33,7 +33,7 @@ public class getExcel extends JPanel {
 	private List<Defeito> lista_defeitos = new ArrayList<Defeito>();
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	
-	//h
+	//
 	public getExcel() {
 		
 		try {
