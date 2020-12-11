@@ -59,6 +59,14 @@ public class getExcel extends JPanel {
 	
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
 
+	/**
+	 * @param selected_file
+	 * @throws NullPointerException
+	 * @throws EncryptedDocumentException
+	 * @throws IOException
+	 * Metodo recebe como imput uma atributo do tipo String que e o ficheiro excel, depois vai percorrer o ficheiro todo e atravez da biblioteca maven Apache POI 4.1.2 foi feita a leitura
+	 * do ficheiro excel 
+	 */
 	public void readFromFile(String selected_file) throws NullPointerException, EncryptedDocumentException, IOException{ // at the begining our file location is uknown, so wee need to use try catch or if
 		//Using a File object allows for lower memory consumption, while an InputStream requires more memory as it has to buffer the whole file.
 			   lista_com_titulos_das_colunas.clear();
@@ -152,6 +160,11 @@ public class getExcel extends JPanel {
 		
 	}
 	
+	/**
+	 * 
+	 * metode serve para transofrmar dados do excel que estao armazenados numa matriz do tipo string em javaTable para no futuro colocar a JTable na gui e utilziador ver
+	 * o conteudo do ficheiro diretamente na gui
+	 */
 	public void passExcelDataToJavaTable() {
 		
 		String [][] data_from_excel = new String [lista_defeitos.size()][lista_com_titulos_das_colunas.size()];
@@ -177,6 +190,11 @@ public class getExcel extends JPanel {
 	}
 	
 	
+	/**
+	 * @param lista_com_titulos
+	 * @return
+	 * method transforma Lista num array do tipo String e devole o mesmo
+	 */
 	public String [] ListToArray(List<String> lista_com_titulos) {
 		String [] first_column = new String[lista_com_titulos.size()];
 		for(int i=0;i<lista_com_titulos.size();i++) {
