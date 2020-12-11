@@ -88,4 +88,12 @@ public class CodeSmellDetection extends JPanel{
 	public int getVetorElement(Vector<Integer> vector, int position) {
 		return vector.get(position);  
 	}
+	
+	public Defeito getDefeito() {
+		return defeito;
+	}
+	
+	public void setDefeito(Defeito defeito) {
+		this.defeito = defeito;
+	}
 }
