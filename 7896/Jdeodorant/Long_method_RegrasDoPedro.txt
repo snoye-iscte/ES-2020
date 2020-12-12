@@ -1,0 +1,4 @@
+RegrasDoPedro	public boolean valid(Defeito) 	firstMetric	B1	0/8
+RegrasDoPedro	public boolean valid(Defeito) 	secondMetric	B1	0/8
+RegrasDoPedro	public boolean valid(Defeito) 	secondMetric	B8	0/7
+RegrasDoPedro	public void update(DefectEnum, MetricEnum, int, OperationEnum, MetricEnum, int) 	i	B1	0/2

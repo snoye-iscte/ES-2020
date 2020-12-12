@@ -1,0 +1,5 @@
+Refactoring Type	Source Entity	Target Class	Source/Target accessed members	Rate it!
+Move Method	CodeSmellDetection::isFeatureEnvy(int, int, Defeito):boolean	Defeito	0/2	
+Move Method	CodeSmellDetection::isLongMethod(int, int, Defeito):boolean	Defeito	0/2	
+Move Method	CodeSmellDetection::isFeatureEnvy():boolean	Defeito	1/2	
+Move Method	CodeSmellDetection::isLongMethod():boolean	Defeito	1/2	

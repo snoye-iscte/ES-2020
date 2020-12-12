@@ -31,7 +31,7 @@ public class RegrasDoPedro implements RegraInterface {
 	 * All combinations of metrics  a user can edit in Gui Combo boxes
 	 * This method will validate each combination
 	 * @author pedro
-	 * @param line
+	 * @param line, this method takes an object Defeito
 	 * @return the value of metric when it is greater than the threshold by omission
 	 */
 	public boolean valid(Defeito line) {
