@@ -1,0 +1,4 @@
+pt.iscte.es.Regras	public boolean valid(pt.iscte.es.Defeito) 	firstMetric	B1	0/8
+pt.iscte.es.Regras	public boolean valid(pt.iscte.es.Defeito) 	secondMetric	B1	0/8
+pt.iscte.es.Regras	public boolean valid(pt.iscte.es.Defeito) 	secondMetric	B8	0/7
+pt.iscte.es.Regras	public void update(pt.iscte.es.DefectEnum, pt.iscte.es.MetricEnum, int, pt.iscte.es.OperationEnum, pt.iscte.es.MetricEnum, int) 	i	B1	0/2

@@ -13,10 +13,10 @@ public class Gui extends JFrame{
 	private JPanel main_panel;
 	private JPanel panel_for_regra = new JPanel(new BorderLayout());
 	private JScrollPane scroll_pane_for_chart_panel;
-	private getExcel get_excel = new getExcel();
+	private GetExcel get_excel = new GetExcel();
 	private String selected_file = "Ficheiros/Defeitos.xlsx";
 	
-	public Gui(getExcel get_excel) {
+	public Gui(GetExcel get_excel) {
 		
 		main_panel = new JPanel();
 		start();

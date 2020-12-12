@@ -7,7 +7,7 @@ public class App
     	//* A classe GUI deve receber a classe Excel, uma classe de interação (alterar os thresholds) e
    	 // a classe QualityIndicators.
     	
-    	getExcel excel = new getExcel();
+    	GetExcel excel = new GetExcel();
     	List<Defeito> defeitos = excel.getListaDefeitos();
     	
     	RegraUi ruleUI = new RegraUi(defeitos);

@@ -1,6 +1,10 @@
+package test;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import pt.iscte.es.*;
 
 public class CodeSmellDetectionTest {
 
@@ -30,5 +34,7 @@ public class CodeSmellDetectionTest {
 		detection.setDefeito(defect);
 		assertEquals(detection.isLongMethod(), false);
 	}
+	
+	
 
 }

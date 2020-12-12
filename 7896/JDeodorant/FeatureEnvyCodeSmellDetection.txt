@@ -1,0 +1,5 @@
+Refactoring Type	Source Entity	Target Class	Source/Target accessed members	Rate it!
+Move Method	pt.iscte.es.CodeSmellDetection::isFeatureEnvy(int, int, pt.iscte.es.Defeito):boolean	pt.iscte.es.Defeito	0/2	
+Move Method	pt.iscte.es.CodeSmellDetection::isLongMethod(int, int, pt.iscte.es.Defeito):boolean	pt.iscte.es.Defeito	0/2	
+Move Method	pt.iscte.es.CodeSmellDetection::isFeatureEnvy():boolean	pt.iscte.es.Defeito	1/2	
+Move Method	pt.iscte.es.CodeSmellDetection::isLongMethod():boolean	pt.iscte.es.Defeito	1/2	

@@ -33,8 +33,8 @@ public class RegraUi extends JPanel {
 		inicializar_Regra();
 		this.i = null;
 	}
-	
-	
+
+
 
 	public void inicializar_Regra() {
 		this.setLayout(new BorderLayout());
@@ -102,22 +102,37 @@ public class RegraUi extends JPanel {
 				// Extração de dados da UI
 				for(Defeito defeito : list_Defeitos) {
 					if(comboBox_defeitos1.getSelectedItem().toString() == "Long Method") {
-						if(code_smell_detection.isLongMethod(Integer.parseInt(textField_threshold1.getText()),Integer.parseInt(textField_threshold2.getText()),defeito)) {
+						if(!(textField_threshold1.getText().equals("") && textField_threshold2.getText().equals(""))) {
+							if(code_smell_detection.isLongMethod(Integer.parseInt(textField_threshold1.getText()),Integer.parseInt(textField_threshold2.getText()),defeito)) {
+								text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_long_method tool \n");
+							}
+						}else if(defeito.isIs_long_method())
 							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_long_method tool \n");
-						}
+
 					}else if(comboBox_defeitos1.getSelectedItem().toString().equals("Feature Envy")) {
-						code_smell_detection.isFeatureEnvy(Integer.parseInt(textField_threshold1.getText()), Integer.parseInt(textField_threshold2.getText()), defeito);
-						text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
+						if(!(textField_threshold1.getText().equals("") && textField_threshold2.getText().equals(""))) {
+							if (code_smell_detection.isFeatureEnvy(Integer.parseInt(textField_threshold1.getText()), Integer.parseInt(textField_threshold2.getText()), defeito) || code_smell_detection.isFeatureEnvy());
+							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
+						}else if(defeito.isIs_feature_envy()) 
+							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
+						
+					}else if(comboBox_defeitos1.getSelectedItem().toString().equals("iPlasma")) {
+						if (defeito.isiPlasma())
+							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using iPlasma tool \n");
+						
+					}else if(comboBox_defeitos1.getSelectedItem().toString().equals("PMD")) {
+						if(defeito.isPMD())
+							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using PMD tool \n");
 					}
 				}
-				
+
 				String defectString = comboBox_defeitos1.getSelectedItem().toString();
 				String metric1String = comboBox_defeitos2.getSelectedItem().toString();
 				String threshold1String = textField_threshold1.getText();
 				String operationString = comboBox_operadores.getSelectedItem().toString();
 				String metric2String = comboBox_defeitos3.getSelectedItem().toString();
 				String threshold2String = textField_threshold2.getText();
-				
+
 				// Validação
 				if(defectString.length() == 0) return;
 				if(metric1String.length() == 0) return;
@@ -125,7 +140,7 @@ public class RegraUi extends JPanel {
 				if(operationString.length() == 0) return;
 				if(metric2String.length() == 0) return;
 				if(threshold2String.length() == 0) return;
-				
+
 				// Transformação de dados
 				DefectEnum defect = defectString == "Long Method" ? DefectEnum.isLongMethod : DefectEnum.featureEnvy;
 				MetricEnum metric1;
@@ -151,21 +166,9 @@ public class RegraUi extends JPanel {
 					metric2 = MetricEnum.LAA;
 				}
 				int threshold2 = Integer.parseInt(threshold2String);
-				
+
 				// Atualizar regra
 				i.update(defect, metric1, threshold1, operation, metric2, threshold2);
-				
-				
-				/*for(Defeito defeito : list_Defeitos) {
-					if(comboBox_defeitos1.getSelectedItem().toString() == "Long Method") {
-						if(code_smell_detection.isLongMethod(Integer.parseInt(textField_threshold1.getText()),Integer.parseInt(textField_threshold2.getText()),defeito)) {
-							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_long_method tool \n");
-						}
-					}else if(comboBox_defeitos1.getSelectedItem().toString().equals("Feature Envy")) {
-						code_smell_detection.isFeatureEnvy(Integer.parseInt(textField_threshold1.getText()), Integer.parseInt(textField_threshold2.getText()), defeito);
-						text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
-					}
-				}*/
 			}
 		});
 	}

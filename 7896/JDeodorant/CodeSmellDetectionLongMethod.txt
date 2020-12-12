@@ -1,0 +1,10 @@
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	DCI	B1	1/3
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADII	B1	3/6
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADII	B3	2/4
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADII	B5	1/3
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADII	B7	0/2
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	DII	B1	2/4
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	DII	B3	1/2
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADCI	B1	3/5
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADCI	B3	2/3
+pt.iscte.es.CodeSmellDetection	public Vector<java.lang.Integer> qualityEvaluation(int, boolean, boolean) 	ADCI	B5	1/2

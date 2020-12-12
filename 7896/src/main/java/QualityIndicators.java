@@ -19,7 +19,7 @@ public class QualityIndicators extends DefaultCategoryDataset implements Quality
 	 * ...
 	 * Quality Indicators Class. It while iterate across Excel cells and add some of the indicated values. 
 	 * @author Pedro
-	 * @param defect,  ArrayList of the attributes we want to select and count. 
+	 * @param lines
 	 */
 	public QualityIndicators(List<Defeito> lines) {
 		this.lines = lines;
@@ -66,8 +66,8 @@ public class QualityIndicators extends DefaultCategoryDataset implements Quality
 	 * Put names on each axes
 	 */
 	private void createDataset() {
-        setValue(iPlasma, "Numero", "iPlasma");
-        setValue(PMD, "Numero", "PMD");
+       // setValue(iPlasma, "Numero", "iPlasma");
+        //setValue(PMD, "Numero", "PMD");
         setValue(DCI, "Numero", "DCI");
         setValue(DII, "Numero", "DII");
         setValue(ADCI, "Numero", "ADCI");

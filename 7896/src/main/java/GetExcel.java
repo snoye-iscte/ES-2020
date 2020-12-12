@@ -24,7 +24,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 
-public class getExcel extends JPanel {
+public class GetExcel extends JPanel {
 	
     private JLabel label = new JLabel("                                CODE SPELLS");
 	private JScrollPane scroll_pane_excel;
@@ -34,7 +34,7 @@ public class getExcel extends JPanel {
 	private List<String> lista_com_titulos_das_colunas = new ArrayList<String>();
 	
 	//hf
-	public getExcel() {
+	public GetExcel() {
 		
 		try {
 			readFromFile(selected_excel);
@@ -60,6 +60,7 @@ public class getExcel extends JPanel {
 	//FOI USADA a versão Apache POI » 4.1.2, porque ela permite metodos mais simples para  ver conteudo duma cell comparando com 3.17
 
 	/**
+	 * @author Sérgio
 	 * @param selected_file
 	 * @throws NullPointerException
 	 * @throws EncryptedDocumentException
@@ -164,6 +165,8 @@ public class getExcel extends JPanel {
 	 * 
 	 * metode serve para transofrmar dados do excel que estao armazenados numa matriz do tipo string em javaTable para no futuro colocar a JTable na gui e utilziador ver
 	 * o conteudo do ficheiro diretamente na gui
+	 * 
+	 * @author Sérgio
 	 */
 	public void passExcelDataToJavaTable() {
 		
@@ -191,8 +194,9 @@ public class getExcel extends JPanel {
 	
 	
 	/**
+	 * @author Sérgio
 	 * @param lista_com_titulos
-	 * @return
+	 * @return first_column
 	 * method transforma Lista num array do tipo String e devole o mesmo
 	 */
 	public String [] ListToArray(List<String> lista_com_titulos) {

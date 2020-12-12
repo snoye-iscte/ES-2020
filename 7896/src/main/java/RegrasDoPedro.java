@@ -30,7 +30,7 @@ public class RegrasDoPedro implements RegraInterface {
 	 * 
 	 * All combinations of metrics  a user can edit in Gui Combo boxes
 	 * This method will validate each combination
-	 * @author pedro
+	 * @author Eduardo and Pedro
 	 * @param line
 	 * @return the value of metric when it is greater than the threshold by omission
 	 */
