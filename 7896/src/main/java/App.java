@@ -9,13 +9,21 @@ public class App
     	
     	getExcel excel = new getExcel();
     	List<Defeito> defeitos = excel.getListaDefeitos();
-		Regra regra = new Regra(defeitos);
+    	
+    	RegraUi ruleUI = new RegraUi(defeitos);
+		RegrasDoPedro rule = new RegrasDoPedro(); // Default rule
+    	
+		
     	QualityIndicators qIndicators = new QualityIndicators(defeitos);
     	QualityIndicatorsChart QIChart = new QualityIndicatorsChart(qIndicators);
 	 	
+    	ruleUI.setListener(rule);
+		rule.setListener(qIndicators);
+    	qIndicators.setListener(QIChart);
+    	
     	Gui gui = new Gui(excel);
 		gui.start();
-		gui.addPanelRegra(regra);
+		gui.addPanelRegra(ruleUI);
 		gui.addChart(QIChart);
 		gui.pack();
     }

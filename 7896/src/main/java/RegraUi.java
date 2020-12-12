@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Regra extends JPanel {
+public class RegraUi extends JPanel {
 	/**
 	 * 
 	 */
@@ -23,25 +23,19 @@ public class Regra extends JPanel {
 	//	private JTextPane text_pane = new JTextPane();
 	JScrollPane scroll_for_text_area = new JScrollPane(text_area);
 	private JComboBox<String> comboBox_defeitos1, comboBox_defeitos2, comboBox_defeitos3, comboBox_operadores;
-	private  JTextField textField_threshold1, textField_threshold2; 
+	private  JTextField textField_threshold1, textField_threshold2;
 	private List<Defeito> list_Defeitos;
 	private CodeSmellDetection code_smell_detection = new CodeSmellDetection();
+	RegraInterface i;
 
-	/**
-	 * @param list
-	 * 
-	 * Este construtor instancia o objecto Regra, permitindo a sua vizualização na 
-	 * interface gráfica da aplicação e a possível detecção de code smells.
-	 */
-	public Regra(List<Defeito> list) {
+	public RegraUi(List<Defeito> list) {
 		this.list_Defeitos = list;
 		inicializar_Regra();
+		this.i = null;
 	}
+	
+	
 
-	/**
-	 * Este método cria a estrutura da Regra e as suas funcionalidades na interface 
-	 * gráfica da aplicação.
-	 */
 	public void inicializar_Regra() {
 		this.setLayout(new BorderLayout());
 		inicializar_comboBox1();
@@ -73,9 +67,9 @@ public class Regra extends JPanel {
 
 	public void inicializar_comboBox3() {
 		String[] defeitos_integer = {"LOC", "CYCLO", "ATFD", "LAA"};
-		this.comboBox_defeitos2 = new JComboBox<String>(defeitos_integer);
-		comboBox_defeitos2.setBounds(50, 50,90,20);
-		panel_up.add(comboBox_defeitos2);
+		this.comboBox_defeitos3 = new JComboBox<String>(defeitos_integer);
+		comboBox_defeitos3.setBounds(50, 50,90,20);
+		panel_up.add(comboBox_defeitos3);
 	}
 
 	public void inicializar_operadores() {
@@ -105,6 +99,7 @@ public class Regra extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// Extração de dados da UI
 				for(Defeito defeito : list_Defeitos) {
 					if(comboBox_defeitos1.getSelectedItem().toString() == "Long Method") {
 						if(code_smell_detection.isLongMethod(Integer.parseInt(textField_threshold1.getText()),Integer.parseInt(textField_threshold2.getText()),defeito)) {
@@ -115,6 +110,62 @@ public class Regra extends JPanel {
 						text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
 					}
 				}
+				
+				String defectString = comboBox_defeitos1.getSelectedItem().toString();
+				String metric1String = comboBox_defeitos2.getSelectedItem().toString();
+				String threshold1String = textField_threshold1.getText();
+				String operationString = comboBox_operadores.getSelectedItem().toString();
+				String metric2String = comboBox_defeitos3.getSelectedItem().toString();
+				String threshold2String = textField_threshold2.getText();
+				
+				// Validação
+				if(defectString.length() == 0) return;
+				if(metric1String.length() == 0) return;
+				if(threshold1String.length() == 0) return;
+				if(operationString.length() == 0) return;
+				if(metric2String.length() == 0) return;
+				if(threshold2String.length() == 0) return;
+				
+				// Transformação de dados
+				DefectEnum defect = defectString == "Long Method" ? DefectEnum.isLongMethod : DefectEnum.featureEnvy;
+				MetricEnum metric1;
+				if(metric1String == "LOC") {
+					metric1 = MetricEnum.LOC;
+				} else if(metric1String == "CYCLO") {
+					metric1 = MetricEnum.CYCLO;
+				} else if(metric1String == "ATFD") {
+					metric1 = MetricEnum.ATFD;
+				} else {
+					metric1 = MetricEnum.LAA;
+				}
+				int threshold1 = Integer.parseInt(threshold1String);
+				OperationEnum operation = operationString == "∧" ? OperationEnum.AND : OperationEnum.OR;
+				MetricEnum metric2;
+				if(metric2String == "LOC") {
+					metric2 = MetricEnum.LOC;
+				} else if(metric2String == "CYCLO") {
+					metric2 = MetricEnum.CYCLO;
+				} else if(metric2String == "ATFD") {
+					metric2 = MetricEnum.ATFD;
+				} else {
+					metric2 = MetricEnum.LAA;
+				}
+				int threshold2 = Integer.parseInt(threshold2String);
+				
+				// Atualizar regra
+				i.update(defect, metric1, threshold1, operation, metric2, threshold2);
+				
+				
+				/*for(Defeito defeito : list_Defeitos) {
+					if(comboBox_defeitos1.getSelectedItem().toString() == "Long Method") {
+						if(code_smell_detection.isLongMethod(Integer.parseInt(textField_threshold1.getText()),Integer.parseInt(textField_threshold2.getText()),defeito)) {
+							text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_long_method tool \n");
+						}
+					}else if(comboBox_defeitos1.getSelectedItem().toString().equals("Feature Envy")) {
+						code_smell_detection.isFeatureEnvy(Integer.parseInt(textField_threshold1.getText()), Integer.parseInt(textField_threshold2.getText()), defeito);
+						text_area.append("CodeSmell Detected on MethodId: " + defeito.getMethod_ID() + " using is_feature_envy tool \n");
+					}
+				}*/
 			}
 		});
 	}
@@ -177,6 +228,10 @@ public class Regra extends JPanel {
 
 	public void setList_Defeitos(List<Defeito> list_Defeitos) {
 		this.list_Defeitos = list_Defeitos;
+	}
+
+	public void setListener(RegraInterface i) {
+		this.i = i;
 	}
 
 }

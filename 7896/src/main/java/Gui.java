@@ -41,7 +41,7 @@ public class Gui extends JFrame{
 	public void addPanelRegra(JPanel panel) {
 		panel_for_regra.add(panel, BorderLayout.NORTH);
 		panel_for_regra.setSize(900, 60);
-		main_panel.add(panel_for_regra,BorderLayout.EAST);  // aqui adicionamos a nossa clase JPanel para JFrame
+		main_panel.add(panel_for_regra,BorderLayout.SOUTH);  // aqui adicionamos a nossa clase JPanel para JFrame
 	}
 	
 	public void addExcelTable(JScrollPane scroll_pane) {
@@ -50,7 +50,7 @@ public class Gui extends JFrame{
 	
 	public void addChart(JPanel panel) {
 		scroll_pane_for_chart_panel =    new JScrollPane(panel,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		panel_for_regra.add(scroll_pane_for_chart_panel, BorderLayout.SOUTH);
+		panel_for_regra.add(scroll_pane_for_chart_panel, BorderLayout.CENTER);
 		main_panel.add(panel_for_regra, BorderLayout.EAST);
 	}
 	
